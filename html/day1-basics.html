@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 — HTML Fundamentals</title>
+    <style>
+      /* Just basic styling so it looks clean in the browser */
+      body        { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #f9f9f9; color: #222; }
+      h1          { color: #1a1a2e; }
+      h2          { color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 6px; margin-top: 40px; }
+      h3          { color: #533483; }
+      .section    { background: #fff; border-left: 4px solid #0f3460; padding: 16px 20px; margin: 20px 0; border-radius: 4px; }
+      .note       { background: #fff8e1; border-left: 4px solid #f9a825; padding: 10px 16px; margin: 10px 0; border-radius: 4px; font-size: 14px; }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         DAY 1 — HTML FUNDAMENTALS
+         Topics covered:
+           1. Page Structure (Skeleton)
+           2. Headings (h1 to h6)
+           3. Paragraphs & Text Tags
+           4. Links
+           5. Images
+           6. Lists (ul, ol, nested)
+    ============================================================ -->
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 1: PAGE STRUCTURE
+         Every HTML file must start with this skeleton.
+         Without this, the browser may not read your
+         file correctly.
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 1 — Page Structure (The Skeleton)</h2>
+
+      <!--
+        <!DOCTYPE html>       → Tells browser: this is an HTML5 file
+        <html lang="en">      → Root element, lang helps screen readers
+        <head>                → Info ABOUT the page, not visible to users
+        <meta charset="UTF-8">         → Supports all characters (Hindi, emoji etc.)
+        <meta name="viewport"...>      → Makes page responsive on mobile
+        <title>               → Text shown on browser tab
+        <body>                → Everything VISIBLE goes inside here
+      -->
+
+      <p>The skeleton you see above in the source code IS topic 1.</p>
+      <p>Every single HTML file you ever write will start with that exact structure. Memorise it. Type it from memory every day until it's automatic.</p>
+
+      <div class="note">
+        📝 NOTE: &lt;head&gt; = invisible info about the page.
+        &lt;body&gt; = everything the user sees.
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 2: HEADINGS
+         h1 = biggest, h6 = smallest
+         h1 should be used ONLY ONCE per page
+         Headings help Google understand your page structure
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 2 — Headings (h1 to h6)</h2>
+
+      <!-- h1: Main title of the page — use only once -->
+      <h1>I am h1 — The Main Title (use only once)</h1>
+
+      <!-- h2: Major section headings -->
+      <h2>I am h2 — Section Heading</h2>
+
+      <!-- h3: Sub-section under h2 -->
+      <h3>I am h3 — Sub-section Heading</h3>
+
+      <!-- h4: Smaller sub-heading -->
+      <h4>I am h4 — Smaller Sub-heading</h4>
+
+      <!-- h5: Rarely used in real projects -->
+      <h5>I am h5 — Rarely Used</h5>
+
+      <!-- h6: Smallest heading -->
+      <h6>I am h6 — The Smallest Heading</h6>
+
+      <div class="note">
+        📝 RULES:<br>
+        1. h1 only ONCE per page (SEO rule)<br>
+        2. Always go in order: h1 → h2 → h3 (don't skip)<br>
+        3. Don't use headings just to make text big — that's CSS's job
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 3: PARAGRAPHS & TEXT TAGS
+         These tags control how text looks and
+         what meaning it carries
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 3 — Paragraphs &amp; Text Tags</h2>
+
+      <!-- p: Standard paragraph block -->
+      <p>This is a normal paragraph using the &lt;p&gt; tag. Every paragraph gets its own block of space automatically.</p>
+
+      <!-- br: Line break — forces text to next line, does NOT add spacing -->
+      <p>This is line one.<br>This is line two (using &lt;br&gt; for a line break).</p>
+
+      <!-- hr: Horizontal rule — draws a dividing line -->
+      <hr>
+      <p>The line above is made with &lt;hr&gt; — used to divide sections.</p>
+      <hr>
+
+      <!-- strong: Bold + marks text as IMPORTANT (semantic meaning) -->
+      <p><strong>This text is bold and important</strong> — use &lt;strong&gt; for key terms or warnings.</p>
+
+      <!-- em: Italic + marks text as emphasized -->
+      <p><em>This text is italic and emphasized</em> — use &lt;em&gt; for titles, foreign words, or stress.</p>
+
+      <!-- mark: Highlighted text — like a yellow marker -->
+      <p>Search results often <mark>highlight the matched keyword</mark> using &lt;mark&gt;.</p>
+
+      <!-- small: Smaller text — for fine print, disclaimers -->
+      <p>Main content here. <small>Terms and conditions apply.</small></p>
+
+      <!-- del: Strikethrough — text that's been removed or is wrong -->
+      <p>Original price: <del>₹2000</del> Now only ₹999!</p>
+
+      <!-- sup: Superscript — above the line, like math powers -->
+      <p>Area = r<sup>2</sup> × π (superscript using &lt;sup&gt;)</p>
+
+      <!-- sub: Subscript — below the line, like chemical formulas -->
+      <p>Water formula: H<sub>2</sub>O (subscript using &lt;sub&gt;)</p>
+
+      <div class="note">
+        📝 REAL WORLD USE:<br>
+        &lt;strong&gt; → warnings, keywords, important info<br>
+        &lt;em&gt; → book titles, technical terms<br>
+        &lt;mark&gt; → search result highlights<br>
+        &lt;small&gt; → copyright text, fine print<br>
+        &lt;del&gt; → old prices, corrections
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 4: LINKS
+         Links connect pages together — that's literally
+         what makes the "web" a web
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 4 — Links (&lt;a&gt; tag)</h2>
+
+      <!-- Basic external link -->
+      <p>
+        <a href="https://google.com">Go to Google</a>
+        — basic link, opens in same tab
+      </p>
+
+      <!-- Open in new tab using target="_blank" -->
+      <p>
+        <a href="https://github.com" target="_blank">Open GitHub in new tab</a>
+        — use target="_blank" for external sites
+      </p>
+
+      <!-- Link to another HTML file in your project -->
+      <p>
+        <a href="about.html">Go to About Page</a>
+        — links to another file in same project folder
+      </p>
+
+      <!-- Link to a section on the SAME page using id -->
+      <p>
+        <a href="#contact-section">Jump to Contact Section below</a>
+        — the # links to an id on this page
+      </p>
+
+      <!-- Email link — opens user's email app -->
+      <p>
+        <a href="mailto:lazik@email.com">Email Me</a>
+        — clicking this opens the email app
+      </p>
+
+      <!-- Phone link — works on mobile devices -->
+      <p>
+        <a href="tel:+919999999999">Call Me</a>
+        — clicking this dials the number on mobile
+      </p>
+
+      <div class="note">
+        📝 RULES:<br>
+        1. href is always required in &lt;a&gt;<br>
+        2. Use target="_blank" only for external links<br>
+        3. Never write "click here" — write what it goes to<br>
+        4. # before an id = jumps to that section on same page
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 5: IMAGES
+         Images make pages visual — learn to use them right
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 5 — Images (&lt;img&gt; tag)</h2>
+
+      <!-- Basic image from internet (no closing tag needed) -->
+      <img src="https://picsum.photos/400/200" alt="A random placeholder image">
+
+      <br><br>
+
+      <!-- Image with custom width and height -->
+      <img
+        src="https://picsum.photos/200/200"
+        alt="A square placeholder image"
+        width="200"
+        height="200"
+      >
+
+      <br><br>
+
+      <!-- Image from local file (when you have your own photo) -->
+      <!-- <img src="images/profile.jpg" alt="Lazik's profile photo"> -->
+      <p><em>(Local image example is commented out — replace with your own photo path)</em></p>
+
+      <!-- Image used as a clickable link -->
+      <a href="https://github.com" target="_blank">
+        <img src="https://picsum.photos/150/60" alt="Click to visit GitHub">
+      </a>
+      <p><small>↑ This image is also a clickable link (img inside a tag)</small></p>
+
+      <div class="note">
+        📝 RULES:<br>
+        1. src = where the image is (url or file path)<br>
+        2. alt = ALWAYS write this — describes image if it fails to load<br>
+        3. alt also helps Google and visually impaired users (screen readers)<br>
+        4. Width/height in HTML is fine for now — CSS handles it better later<br>
+        5. img is a self-closing tag — no &lt;/img&gt; needed
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 6: LISTS
+         Lists are everywhere in real projects —
+         navbars, features, steps, skill sections
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 6 — Lists (ul, ol, nested)</h2>
+
+      <!-- ul: Unordered list = bullet points, ORDER doesn't matter -->
+      <h3>Unordered List (ul) — Bullet Points</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+      </ul>
+
+      <!-- ol: Ordered list = numbered, ORDER matters -->
+      <h3>Ordered List (ol) — Numbered Steps</h3>
+      <ol>
+        <li>Learn HTML basics</li>
+        <li>Learn CSS styling</li>
+        <li>Learn JavaScript</li>
+        <li>Build projects</li>
+        <li>Get a job</li>
+      </ol>
+
+      <!-- Nested list: list inside a list -->
+      <h3>Nested List — List Inside a List</h3>
+      <ul>
+        <li>Frontend
+          <ul>
+            <!-- This ul is INSIDE the li above — creates a nested list -->
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </li>
+        <li>Backend
+          <ul>
+            <li>Node.js</li>
+            <li>Python</li>
+          </ul>
+        </li>
+        <li>Tools
+          <ul>
+            <li>VS Code</li>
+            <li>GitHub</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="note">
+        📝 REAL WORLD USE:<br>
+        &lt;ul&gt; → navigation menus, feature lists, skill sections<br>
+        &lt;ol&gt; → step-by-step guides, rankings, instructions<br>
+        &lt;li&gt; → always goes INSIDE ul or ol, never alone<br>
+        Nested lists → category menus, dropdown nav items
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         PRACTICE SECTION
+         This is the contact section linked to from
+         Topic 4 above using id="contact-section"
+    ────────────────────────────────────────────── -->
+
+    <div class="section" id="contact-section">
+
+      <h2>Practice — Mini Bio Page</h2>
+      <!-- This is the section that the anchor link above jumps to -->
+
+      <h1>Lazik Latief</h1>
+      <p>I am a <strong>Frontend Developer</strong> in training.</p>
+      <p><em>Currently learning HTML, CSS and JavaScript.</em></p>
+
+      <hr>
+
+      <h2>My Skills</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+      </ul>
+
+      <h2>My Goals</h2>
+      <ol>
+        <li>Master HTML &amp; CSS</li>
+        <li>Learn JavaScript deeply</li>
+        <li>Build 3 real projects</li>
+        <li>Land a frontend job</li>
+      </ol>
+
+      <hr>
+
+      <h2>Contact</h2>
+      <p><a href="mailto:lazik@email.com">📧 Email Me</a></p>
+      <p><a href="https://github.com" target="_blank">🐙 My GitHub</a></p>
+
+    </div>
+
+
+  </body>
+</html>
