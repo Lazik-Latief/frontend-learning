@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2 — Tables & Forms</title>
+    <style>
+      /* Basic styling to make everything readable in browser */
+      body           { font-family: Arial, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 24px; background: #f4f6fb; color: #222; }
+      h1             { color: #1a1a2e; }
+      h2             { color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 6px; margin-top: 44px; }
+      h3             { color: #533483; margin-top: 28px; }
+      .section       { background: #fff; border-left: 4px solid #0f3460; padding: 20px 24px; margin: 24px 0; border-radius: 6px; }
+      .note          { background: #fff8e1; border-left: 4px solid #f9a825; padding: 10px 16px; margin: 14px 0; border-radius: 4px; font-size: 14px; line-height: 1.7; }
+
+      /* Table styling */
+      table          { border-collapse: collapse; width: 100%; margin: 16px 0; }
+      th, td         { border: 1px solid #ccc; padding: 10px 14px; text-align: left; }
+      th             { background: #0f3460; color: #fff; }
+      tr:nth-child(even) td { background: #f0f4ff; }
+
+      /* Form styling */
+      form           { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #dde3f0; margin: 16px 0; }
+      label          { display: block; margin-top: 16px; font-weight: bold; color: #16213e; font-size: 15px; }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="date"],
+      input[type="file"],
+      select,
+      textarea       { width: 100%; padding: 10px 12px; margin-top: 6px; border: 1px solid #bbb; border-radius: 4px; font-size: 15px; box-sizing: border-box; background: #fafbff; }
+      input:focus,
+      select:focus,
+      textarea:focus { outline: 2px solid #0f3460; border-color: #0f3460; }
+      .radio-group,
+      .checkbox-group { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
+      .radio-group label,
+      .checkbox-group label { font-weight: normal; display: flex; align-items: center; gap: 6px; margin-top: 0; cursor: pointer; }
+      .btn-row       { display: flex; gap: 12px; margin-top: 24px; }
+      button[type="submit"] { background: #0f3460; color: #fff; border: none; padding: 12px 28px; border-radius: 4px; font-size: 15px; cursor: pointer; }
+      button[type="submit"]:hover { background: #16213e; }
+      button[type="reset"]  { background: #eee; color: #333; border: 1px solid #bbb; padding: 12px 28px; border-radius: 4px; font-size: 15px; cursor: pointer; }
+      button[type="reset"]:hover { background: #ddd; }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         DAY 2 — HTML TABLES & FORMS
+         Topics covered:
+           1. Basic Table (table, thead, tbody, tr, th, td)
+           2. Table Spanning (colspan, rowspan)
+           3. Forms — Inputs, Labels, Attributes
+           4. All Input Types
+           5. Select, Textarea, Buttons
+           6. Practice — Student Registration Form + Table
+    ============================================================ -->
+
+
+    <h1>Day 2 — Tables &amp; Forms</h1>
+    <p>Two of the most used HTML elements in real-world projects. Every app has forms. Every data page has tables.</p>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 1: BASIC TABLE
+         table  → the wrapper
+         thead  → header section of table
+         tbody  → data section of table
+         tr     → one full row (table row)
+         th     → heading cell (bold, centered by default)
+         td     → data cell (normal text)
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 1 — Basic Table</h2>
+
+      <table>
+
+        <!-- thead: wraps the header row -->
+        <thead>
+          <tr>
+            <!-- th: heading cells — bold by default -->
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+
+        <!-- tbody: wraps all data rows -->
+        <tbody>
+
+          <!-- tr: one full row of data -->
+          <tr>
+            <!-- td: one data cell inside the row -->
+            <td>Lazik Latief</td>
+            <td>21</td>
+            <td>Srinagar</td>
+            <td>Frontend Dev</td>
+          </tr>
+
+          <tr>
+            <td>Amir Khan</td>
+            <td>22</td>
+            <td>Delhi</td>
+            <td>Backend Dev</td>
+          </tr>
+
+          <tr>
+            <td>Sara Ahmed</td>
+            <td>20</td>
+            <td>Mumbai</td>
+            <td>Fullstack Dev</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="note">
+        📝 STRUCTURE ORDER (always follow this):<br>
+        &lt;table&gt; → &lt;thead&gt; → &lt;tr&gt; → &lt;th&gt; (headings)<br>
+        &lt;table&gt; → &lt;tbody&gt; → &lt;tr&gt; → &lt;td&gt; (data)<br><br>
+        th = table heading cell (bold + centered by default)<br>
+        td = table data cell (normal text)
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 2: TABLE SPANNING
+         colspan → merge cells HORIZONTALLY (across columns)
+         rowspan → merge cells VERTICALLY (across rows)
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 2 — Table Spanning (colspan &amp; rowspan)</h2>
+
+      <h3>colspan — Merging columns horizontally</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <!-- colspan="3" means this one cell takes up 3 column spaces -->
+            <th colspan="3">Student Results — 2024</th>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lazik</td>
+            <td>HTML</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td>Amir</td>
+            <td>CSS</td>
+            <td>88</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>rowspan — Merging rows vertically</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <!-- rowspan="2" means this cell stretches across 2 rows -->
+            <td rowspan="2">Lazik</td>
+            <td>HTML</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <!-- No first td here — because Lazik's cell above spans this row too -->
+            <td>CSS</td>
+            <td>90</td>
+          </tr>
+          <tr>
+            <td rowspan="2">Amir</td>
+            <td>JavaScript</td>
+            <td>85</td>
+          </tr>
+          <tr>
+            <td>React</td>
+            <td>80</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        📝 RULES:<br>
+        colspan="2" → cell takes up 2 columns width<br>
+        rowspan="2" → cell takes up 2 rows height<br>
+        When using rowspan, remove the td from the row below (it's already occupied)
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 3: FORM BASICS + LABEL CONNECTION
+         form    → wraps all inputs
+         label   → text description for each input
+         input   → where user types / selects data
+         IMPORTANT: label "for" must match input "id"
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 3 — Form Basics &amp; Label Connection</h2>
+
+      <!--
+        action = URL where form data is sent on submit
+        method = GET (data visible in URL) or POST (data hidden)
+        For real apps → always use POST for sensitive data
+      -->
+      <form action="/submit" method="POST">
+
+        <!--
+          label for="name" connects to input id="name"
+          Clicking the label automatically focuses the input
+          Always connect them — important for accessibility
+        -->
+        <label for="fullname">Full Name:</label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Enter your full name"
+          required
+        >
+        <!-- required → field must be filled before form submits -->
+
+        <label for="useremail">Email Address:</label>
+        <input
+          type="email"
+          id="useremail"
+          name="useremail"
+          placeholder="you@email.com"
+          required
+        >
+        <!-- type="email" → browser validates @ symbol automatically -->
+
+        <label for="userpass">Password:</label>
+        <input
+          type="password"
+          id="userpass"
+          name="userpass"
+          placeholder="Minimum 8 characters"
+          maxlength="20"
+        >
+        <!-- type="password" → characters show as dots -->
+        <!-- maxlength="20"  → user can't type more than 20 chars -->
+
+        <div class="btn-row">
+          <button type="submit">Submit</button>
+          <button type="reset">Clear Form</button>
+        </div>
+
+      </form>
+
+      <div class="note">
+        📝 KEY RULES:<br>
+        label "for" value must EXACTLY match input "id" value<br>
+        method="GET"  → data goes in URL (use for search forms)<br>
+        method="POST" → data is hidden (use for login, signup, contact)<br>
+        required → makes the field mandatory before submit
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 4: ALL INPUT TYPES
+         type="text"     → single line text
+         type="email"    → validates email format
+         type="password" → hides characters
+         type="number"   → only numbers, min/max supported
+         type="date"     → calendar date picker
+         type="checkbox" → tick/untick options
+         type="radio"    → pick ONE from a group
+         type="file"     → upload a file
+         type="hidden"   → invisible, sends data silently
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 4 — All Input Types</h2>
+
+      <form>
+
+        <!-- type="text" → single line, accepts anything -->
+        <label for="t1">Text input:</label>
+        <input type="text" id="t1" placeholder="Any text here">
+
+        <!-- type="email" → validates @ and domain format -->
+        <label for="t2">Email input:</label>
+        <input type="email" id="t2" placeholder="must have @ symbol">
+
+        <!-- type="password" → shows dots, hides characters -->
+        <label for="t3">Password input:</label>
+        <input type="password" id="t3" placeholder="hidden characters">
+
+        <!-- type="number" → only accepts numbers, min/max sets range -->
+        <label for="t4">Number input (1–100):</label>
+        <input type="number" id="t4" min="1" max="100" value="18">
+
+        <!-- type="date" → shows a calendar picker -->
+        <label for="t5">Date input:</label>
+        <input type="date" id="t5">
+
+        <!-- type="checkbox" → user can tick multiple options -->
+        <label>Checkbox inputs (multiple allowed):</label>
+        <div class="checkbox-group">
+          <!-- each checkbox has its own id and value -->
+          <label>
+            <input type="checkbox" name="skills" value="html"> HTML
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="css"> CSS
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="js"> JavaScript
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="react"> React
+          </label>
+        </div>
+        <!--
+          All checkboxes share the same name="skills"
+          User can pick multiple options
+        -->
+
+        <!-- type="radio" → user can pick ONLY ONE from the group -->
+        <label>Radio inputs (only one allowed):</label>
+        <div class="radio-group">
+          <!--
+            All radio buttons MUST share the same name="gender"
+            This is what makes them a group — only one selectable
+          -->
+          <label>
+            <input type="radio" name="gender" value="male"> Male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="female"> Female
+          </label>
+          <label>
+            <input type="radio" name="gender" value="other"> Other
+          </label>
+        </div>
+
+        <!-- type="file" → lets user upload a file -->
+        <label for="t6">File upload:</label>
+        <input type="file" id="t6" name="resume">
+
+        <!--
+          type="hidden" → invisible to user
+          Used to send extra data silently with the form
+          Example: sending user ID or page source info
+        -->
+        <input type="hidden" name="source" value="registration-page">
+
+      </form>
+
+      <div class="note">
+        📝 IMPORTANT DIFFERENCES:<br>
+        checkbox → user can select MULTIPLE options (different name per group is fine)<br>
+        radio    → user can select ONLY ONE — all in group MUST share same name<br>
+        hidden   → invisible to user, sends data silently with form
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 5: SELECT, TEXTAREA, BUTTONS
+         select   → dropdown menu
+         option   → each item inside select
+         textarea → multiline text box
+         button   → submit, reset, or plain button
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 5 — Select, Textarea &amp; Buttons</h2>
+
+      <form>
+
+        <!-- select → dropdown menu -->
+        <label for="city">Select your city:</label>
+        <select id="city" name="city">
+          <!-- First option is usually a placeholder -->
+          <option value="">-- Choose a city --</option>
+          <!-- value = what gets sent, text between tags = what user sees -->
+          <option value="srinagar">Srinagar</option>
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="hyderabad">Hyderabad</option>
+        </select>
+
+        <!-- select with one option pre-selected using "selected" attribute -->
+        <label for="course">Select your course:</label>
+        <select id="course" name="course">
+          <option value="">-- Choose a course --</option>
+          <option value="frontend" selected>Frontend Development</option>
+          <!-- "selected" makes this option appear chosen by default -->
+          <option value="backend">Backend Development</option>
+          <option value="fullstack">Fullstack Development</option>
+        </select>
+
+        <!-- textarea → multiline text box for longer input -->
+        <label for="msg">Your message:</label>
+        <textarea
+          id="msg"
+          name="message"
+          rows="5"
+          placeholder="Write something about yourself..."
+        ></textarea>
+        <!--
+          rows="5"  → height of the textarea (in lines)
+          Unlike input, textarea has an opening AND closing tag
+          Content goes between the tags, not in value attribute
+        -->
+
+        <!-- Buttons -->
+        <div class="btn-row">
+
+          <!-- type="submit" → sends the form data -->
+          <button type="submit">Submit Form</button>
+
+          <!-- type="reset" → clears all fields back to default -->
+          <button type="reset">Reset Form</button>
+
+        </div>
+
+      </form>
+
+      <div class="note">
+        📝 KEY DIFFERENCES:<br>
+        &lt;input&gt; → self-closing, single line only<br>
+        &lt;textarea&gt; → needs closing tag, multiline, use rows attribute for height<br>
+        &lt;select&gt; → always wrap options in select, use value="" for placeholder option<br>
+        "selected" attribute → pre-selects an option by default
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         TOPIC 6: ALL IMPORTANT FORM ATTRIBUTES
+         required    → must fill before submit
+         placeholder → hint text inside field
+         value       → pre-filled value
+         disabled    → visible but not editable
+         readonly    → user can see but not change
+         maxlength   → limits character count
+         min / max   → limits number/date range
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Topic 6 — Important Form Attributes</h2>
+
+      <form>
+
+        <!-- required → field must be filled before form submits -->
+        <label for="a1">Required field:</label>
+        <input type="text" id="a1" placeholder="You must fill this" required>
+
+        <!-- placeholder → hint text, disappears when user types -->
+        <label for="a2">Placeholder example:</label>
+        <input type="text" id="a2" placeholder="This is a placeholder hint">
+
+        <!-- value → pre-fills the field with a default value -->
+        <label for="a3">Pre-filled value:</label>
+        <input type="text" id="a3" value="Lazik Latief">
+
+        <!-- disabled → field is visible but completely uneditable, not sent with form -->
+        <label for="a4">Disabled field:</label>
+        <input type="text" id="a4" value="Cannot edit this" disabled>
+
+        <!-- readonly → user can see and copy but not change, IS sent with form -->
+        <label for="a5">Readonly field:</label>
+        <input type="text" id="a5" value="Can read, cannot edit" readonly>
+
+        <!-- maxlength → limits how many characters user can type -->
+        <label for="a6">Max 10 characters:</label>
+        <input type="text" id="a6" maxlength="10" placeholder="Max 10 chars">
+
+        <!-- min and max → for number/date inputs -->
+        <label for="a7">Number (between 18 and 60):</label>
+        <input type="number" id="a7" min="18" max="60" value="21">
+
+        <div class="btn-row">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+
+      </form>
+
+      <div class="note">
+        📝 disabled vs readonly:<br>
+        disabled → user cannot interact, value NOT sent when form submits<br>
+        readonly → user can see/copy, value IS sent when form submits<br><br>
+        value vs placeholder:<br>
+        value     → actual pre-filled content (gets submitted)<br>
+        placeholder → just a hint, disappears when user types
+      </div>
+
+    </div>
+
+
+    <!-- ──────────────────────────────────────────────
+         PRACTICE: STUDENT REGISTRATION FORM + TABLE
+         This is your Day 2 project — build this yourself
+         before looking at this code
+    ────────────────────────────────────────────── -->
+
+    <div class="section">
+
+      <h2>Practice — Student Registration Form</h2>
+
+      <form action="/register" method="POST">
+
+        <!-- Full name -->
+        <label for="reg-name">Full Name:</label>
+        <input type="text" id="reg-name" name="fullname" placeholder="Your full name" required>
+
+        <!-- Email -->
+        <label for="reg-email">Email:</label>
+        <input type="email" id="reg-email" name="email" placeholder="you@email.com" required>
+
+        <!-- Age -->
+        <label for="reg-age">Age:</label>
+        <input type="number" id="reg-age" name="age" min="16" max="40" required>
+
+        <!-- City dropdown -->
+        <label for="reg-city">City:</label>
+        <select id="reg-city" name="city" required>
+          <option value="">-- Select your city --</option>
+          <option value="srinagar">Srinagar</option>
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="pune">Pune</option>
+        </select>
+
+        <!-- Course — radio (pick ONE) -->
+        <label>Course (select one):</label>
+        <div class="radio-group">
+          <label>
+            <input type="radio" name="course" value="frontend" required> Frontend
+          </label>
+          <label>
+            <input type="radio" name="course" value="backend"> Backend
+          </label>
+          <label>
+            <input type="radio" name="course" value="fullstack"> Fullstack
+          </label>
+        </div>
+
+        <!-- Skills — checkboxes (pick multiple) -->
+        <label>Skills (select all that apply):</label>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="skills" value="html"> HTML
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="css"> CSS
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="js"> JavaScript
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="react"> React
+          </label>
+          <label>
+            <input type="checkbox" name="skills" value="git"> Git
+          </label>
+        </div>
+
+        <!-- About textarea -->
+        <label for="reg-about">About Yourself:</label>
+        <textarea
+          id="reg-about"
+          name="about"
+          rows="4"
+          placeholder="Tell us about yourself, your goals, your background..."
+        ></textarea>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+          <button type="submit">Register Now</button>
+          <button type="reset">Clear Form</button>
+        </div>
+
+      </form>
+
+
+      <h2>Registered Students — Table</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Course</th>
+            <th>Skills</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Lazik Latief</td>
+            <td>21</td>
+            <td>Srinagar</td>
+            <td>Frontend</td>
+            <td>HTML, CSS, JS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Amir Khan</td>
+            <td>22</td>
+            <td>Delhi</td>
+            <td>Backend</td>
+            <td>Python, Node.js</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Sara Ahmed</td>
+            <td>20</td>
+            <td>Mumbai</td>
+            <td>Fullstack</td>
+            <td>HTML, CSS, JS, React</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+  </body>
+</html>
+ 
