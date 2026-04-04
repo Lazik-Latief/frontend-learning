@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 3 — Semantic Tags + Div & Span</title>
+    <style>
+      /* Basic styling to make everything readable in browser */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body        { font-family: Arial, sans-serif; background: #f4f6fb; color: #222; line-height: 1.7; }
+
+      /* Header */
+      header      { background: #1a1a2e; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+      header h1   { font-size: 22px; }
+      nav a       { color: #a0c4ff; text-decoration: none; margin-left: 20px; font-size: 15px; }
+      nav a:hover { color: #fff; }
+
+      /* Main layout */
+      .page-wrapper { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+
+      h2          { color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 6px; margin: 32px 0 14px; }
+      h3          { color: #533483; margin: 20px 0 10px; }
+      p           { margin-bottom: 12px; }
+
+      .note       { background: #fff8e1; border-left: 4px solid #f9a825; padding: 10px 16px; margin: 14px 0; border-radius: 4px; font-size: 14px; line-height: 1.7; }
+      .section-box { background: #fff; border-left: 4px solid #0f3460; padding: 20px 24px; margin: 24px 0; border-radius: 6px; }
+
+      /* Section, article, aside demo */
+      .layout-demo { display: flex; gap: 20px; margin: 16px 0; flex-wrap: wrap; }
+      .layout-demo section { flex: 2; background: #e8f0fe; border: 1px solid #b3c6f7; border-radius: 6px; padding: 16px; }
+      .layout-demo aside  { flex: 1; background: #fce8e6; border: 1px solid #f5c6c2; border-radius: 6px; padding: 16px; min-width: 180px; }
+
+      article.blog-card { background: #fff; border: 1px solid #dde3f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+      article.blog-card h3 { margin-top: 0; }
+
+      /* Figure */
+      figure      { margin: 16px 0; display: inline-block; }
+      figcaption  { font-size: 13px; color: #666; margin-top: 6px; text-align: center; }
+
+      /* Code and pre */
+      code        { background: #f0f4ff; color: #c0392b; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 14px; }
+      pre         { background: #1a1a2e; color: #a8d8ea; padding: 16px 20px; border-radius: 6px; font-size: 14px; overflow-x: auto; margin: 12px 0; }
+
+      /* Blockquote */
+      blockquote  { border-left: 4px solid #0f3460; padding: 10px 20px; margin: 16px 0; background: #f0f4ff; color: #444; border-radius: 0 6px 6px 0; }
+
+      /* Div and span demo */
+      .card       { background: #fff; border: 1px solid #dde3f0; border-radius: 8px; padding: 20px; margin: 12px 0; max-width: 320px; display: inline-block; vertical-align: top; }
+      .card h3    { color: #0f3460; margin-top: 0; }
+      .highlight  { color: #0f3460; font-weight: bold; }
+      .city       { color: #27ae60; font-weight: bold; }
+      .warning    { color: #e74c3c; font-weight: bold; }
+
+      /* Footer */
+      footer      { background: #1a1a2e; color: #aaa; text-align: center; padding: 20px; margin-top: 40px; font-size: 14px; }
+      footer a    { color: #a0c4ff; text-decoration: none; }
+
+      address     { font-style: normal; background: #f0f4ff; border-radius: 6px; padding: 12px 16px; display: inline-block; margin: 8px 0; }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         DAY 3 — SEMANTIC TAGS + DIV & SPAN
+         Topics covered:
+           1. What is Semantic HTML and why it matters
+           2. Full page layout tags (header, nav, main, footer)
+           3. section vs article vs aside
+           4. Other semantic tags (figure, time, address, abbr, etc.)
+           5. div vs span — block vs inline
+           6. Practice — Full semantic blog page
+    ============================================================ -->
+
+
+    <!-- ──────────────────────────────────────────────
+         SEMANTIC TAG: header
+         Goes at the TOP of the page
+         Contains: logo, site title, main navigation
+         Use only ONCE as the main page header
+    ────────────────────────────────────────────── -->
+
+    <header>
+      <h1>Lazik Latief — Frontend Developer</h1>
+
+      <!-- nav: ONLY for navigation links
+           Do not use nav for every group of links
+           Use it for main menus, sidebars, breadcrumbs -->
+      <nav>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+
+    <!-- ──────────────────────────────────────────────
+         SEMANTIC TAG: main
+         The PRIMARY unique content of the page
+         Use only ONCE per page
+         Screen readers jump directly to main
+    ────────────────────────────────────────────── -->
+
+    <main>
+      <div class="page-wrapper">
+
+
+        <!-- ── TOPIC 1: WHAT IS SEMANTIC HTML ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 1 — What is Semantic HTML?</h2>
+
+          <p>
+            Semantic means the tag describes the
+            <strong>meaning</strong> of the content,
+            not just how it looks.
+          </p>
+
+          <!-- Non-semantic example -->
+          <h3>Non-semantic way (wrong approach)</h3>
+          <pre>
+&lt;div&gt;Navigation here&lt;/div&gt;
+&lt;div&gt;Main content here&lt;/div&gt;
+&lt;div&gt;Footer here&lt;/div&gt;
+          </pre>
+          <!-- div tells browser nothing about what the content IS -->
+
+          <!-- Semantic example -->
+          <h3>Semantic way (correct approach)</h3>
+          <pre>
+&lt;nav&gt;Navigation here&lt;/nav&gt;
+&lt;main&gt;Main content here&lt;/main&gt;
+&lt;footer&gt;Footer here&lt;/footer&gt;
+          </pre>
+          <!-- These tags tell the browser exactly what each part means -->
+
+          <div class="note">
+            📝 WHY SEMANTIC HTML MATTERS:<br>
+            1. SEO — Google understands your page better, ranks it higher<br>
+            2. Accessibility — screen readers for blind users work correctly<br>
+            3. Readability — other developers understand your code faster<br>
+            4. Professional standard — every company expects this
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 2: FULL PAGE LAYOUT TAGS ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 2 — Full Page Layout Tags</h2>
+
+          <pre>
+&lt;header&gt;   → Top of page — logo, title, main nav
+&lt;nav&gt;      → Navigation links only
+&lt;main&gt;     → Primary page content — use ONCE
+&lt;section&gt;  → Grouped content with a heading
+&lt;article&gt;  → Self-contained content
+&lt;aside&gt;    → Side or extra related content
+&lt;footer&gt;   → Bottom of page — copyright, links
+          </pre>
+
+          <h3>Full page structure example:</h3>
+          <pre>
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Site Title&lt;/h1&gt;
+    &lt;nav&gt;...links...&lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section&gt;...about...&lt;/section&gt;
+    &lt;article&gt;...blog post...&lt;/article&gt;
+    &lt;aside&gt;...related links...&lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;...copyright...&lt;/footer&gt;
+&lt;/body&gt;
+          </pre>
+
+          <div class="note">
+            📝 RULES:<br>
+            &lt;header&gt; and &lt;footer&gt; can appear inside article/section too<br>
+            &lt;main&gt; — use only ONCE per page<br>
+            &lt;nav&gt; — only for major navigation, not every link group
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 3: SECTION vs ARTICLE vs ASIDE ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 3 — section vs article vs aside</h2>
+
+          <p>This confuses most beginners. Here is the simple rule:</p>
+
+          <pre>
+section  → Part of a bigger page, needs the page for context
+article  → Stands alone, makes sense even outside the page
+aside    → Related but not essential to the main content
+          </pre>
+
+          <!-- Live visual demo of section + aside layout -->
+          <h3>Live demo — section + aside together:</h3>
+
+          <div class="layout-demo">
+
+            <!-- section: a thematic grouping with a heading -->
+            <!-- This content is part of the bigger page -->
+            <section id="about">
+              <h3>About Me (section)</h3>
+              <p>
+                I am <strong>Lazik Latief</strong>, a
+                <abbr title="Bachelor of Computer Applications">BCA</abbr>
+                student from Srinagar learning frontend development.
+              </p>
+              <p>
+                Currently in my final semester, building skills in
+                <code>HTML</code>, <code>CSS</code>, and
+                <code>JavaScript</code>.
+              </p>
+            </section>
+
+            <!-- aside: extra content, not the main point -->
+            <!-- Related to main content but not essential -->
+            <aside>
+              <h3>Quick Links (aside)</h3>
+              <p><a href="#">HTML Docs</a></p>
+              <p><a href="#">CSS Tricks</a></p>
+              <p><a href="#">JS Guide</a></p>
+            </aside>
+
+          </div>
+
+          <!-- article: self-contained, could be shared anywhere -->
+          <!-- A blog post, news item, or product card -->
+          <h3>Article example — blog post card:</h3>
+
+          <article class="blog-card">
+            <!-- This entire article makes sense even outside this page -->
+            <h3>How I Started Learning HTML</h3>
+            <p>
+              Posted on
+              <!-- time: machine-readable date, human-readable display -->
+              <!-- datetime attribute = the actual date for computers -->
+              <!-- text between tags = what humans see -->
+              <time datetime="2024-04-01">April 1, 2024</time>
+            </p>
+            <p>
+              It all started when I decided to stop watching tutorials
+              and start actually writing code. Day 1 was the skeleton...
+            </p>
+            <a href="#">Read more →</a>
+          </article>
+
+          <div class="note">
+            📝 QUICK TEST TO DECIDE:<br>
+            Ask yourself: "Does this content make sense on its own?"<br>
+            YES → use &lt;article&gt;<br>
+            NO, it needs the page → use &lt;section&gt;<br>
+            It is extra/side info → use &lt;aside&gt;
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 4: OTHER SEMANTIC TAGS ── -->
+
+        <div class="section-box" id="blog">
+
+          <h2>Topic 4 — Other Semantic Tags</h2>
+
+
+          <!-- figure + figcaption: image with a description -->
+          <!-- figure wraps the image and its caption together -->
+          <h3>figure + figcaption</h3>
+
+          <figure>
+            <img
+              src="https://picsum.photos/300/180"
+              alt="A sample project screenshot"
+              width="300"
+            >
+            <!-- figcaption: caption that describes the figure -->
+            <figcaption>Screenshot of my first HTML project</figcaption>
+          </figure>
+
+          <pre>
+&lt;figure&gt;
+  &lt;img src="project.png" alt="Project screenshot"&gt;
+  &lt;figcaption&gt;My first project&lt;/figcaption&gt;
+&lt;/figure&gt;
+          </pre>
+
+
+          <!-- time: represents a specific time or date -->
+          <!-- datetime = machine-readable format (for computers/SEO) -->
+          <!-- content between tags = human readable display -->
+          <h3>time</h3>
+
+          <p>
+            This page was last updated on
+            <time datetime="2024-04-01">April 1, 2024</time>.
+          </p>
+          <p>
+            My daily coding session starts at
+            <time datetime="09:00">9:00 AM</time>.
+          </p>
+
+          <pre>
+&lt;time datetime="2024-04-01"&gt;April 1, 2024&lt;/time&gt;
+          </pre>
+
+
+          <!-- address: contact information for the nearest article or body -->
+          <h3>address</h3>
+
+          <address>
+            <p>Lazik Latief</p>
+            <p>Email: <a href="mailto:lazik@email.com">lazik@email.com</a></p>
+            <p>Location: Srinagar, Jammu &amp; Kashmir</p>
+          </address>
+
+
+          <!-- abbr: abbreviation — shows full form on hover -->
+          <h3>abbr</h3>
+
+          <p>
+            I am studying
+            <abbr title="Bachelor of Computer Applications">BCA</abbr>
+            and learning
+            <abbr title="HyperText Markup Language">HTML</abbr>,
+            <abbr title="Cascading Style Sheets">CSS</abbr>, and
+            <abbr title="JavaScript">JS</abbr>.
+          </p>
+          <!-- Hover over the abbreviations to see the full form -->
+
+
+          <!-- blockquote: a quoted section from another source -->
+          <h3>blockquote</h3>
+
+          <blockquote cite="https://developer.mozilla.org">
+            <p>
+              "HTML is the standard markup language for creating web pages.
+              HTML describes the structure of a web page semantically."
+            </p>
+            <footer>— MDN Web Docs</footer>
+          </blockquote>
+
+
+          <!-- code: for inline code snippets inside text -->
+          <h3>code</h3>
+
+          <p>
+            To create a paragraph use the <code>&lt;p&gt;</code> tag.
+            Always write <code>alt=""</code> on every image.
+            The <code>document.querySelector()</code> method selects elements.
+          </p>
+
+
+          <!-- pre: preserves ALL whitespace and line breaks -->
+          <!-- Used for displaying code blocks -->
+          <h3>pre (preformatted text)</h3>
+
+          <pre>
+function greet(name) {
+  console.log("Hello, " + name);
+}
+
+greet("Lazik");
+          </pre>
+          <!-- Every space and line break inside pre is preserved exactly -->
+
+          <div class="note">
+            📝 QUICK REFERENCE:<br>
+            &lt;figure&gt; + &lt;figcaption&gt; → image with caption<br>
+            &lt;time datetime=""&gt; → date/time, datetime is for machines<br>
+            &lt;address&gt; → contact info block<br>
+            &lt;abbr title=""&gt; → abbreviation, full form shows on hover<br>
+            &lt;blockquote&gt; → quoted content from another source<br>
+            &lt;code&gt; → inline code snippet inside text<br>
+            &lt;pre&gt; → preserves spaces and line breaks exactly
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 5: DIV vs SPAN ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 5 — div vs span</h2>
+
+          <p>
+            When NO semantic tag fits your need — use
+            <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code>.
+          </p>
+
+          <pre>
+div  → BLOCK level  → takes full width, starts on a new line
+span → INLINE level → stays inside text, no new line
+          </pre>
+
+
+          <!-- div: block container — groups elements for layout -->
+          <h3>div — Block Container</h3>
+
+          <!-- Each div takes full width and goes on a new line -->
+          <!-- Used for cards, wrappers, layout boxes, grouping sections -->
+
+          <div class="card">
+            <!-- This whole card is wrapped in a div -->
+            <h3>Project 1</h3>
+            <p>A personal bio page built with HTML only.</p>
+            <a href="#">View Project →</a>
+          </div>
+
+          <div class="card">
+            <h3>Project 2</h3>
+            <p>A student registration form with tables.</p>
+            <a href="#">View Project →</a>
+          </div>
+
+          <pre>
+&lt;!-- Two divs = two separate blocks, each on its own line --&gt;
+&lt;div class="card"&gt;Card One&lt;/div&gt;
+&lt;div class="card"&gt;Card Two&lt;/div&gt;
+          </pre>
+
+
+          <!-- span: inline container — targets part of text -->
+          <h3>span — Inline Container</h3>
+
+          <!-- span does NOT break to a new line -->
+          <!-- Used to style or target ONE word or phrase inside text -->
+
+          <p>
+            My name is
+            <span class="highlight">Lazik Latief</span>
+            and I am from
+            <span class="city">Srinagar</span>.
+            I am learning frontend development.
+          </p>
+
+          <p>
+            Remember: the
+            <span class="warning">alt attribute is mandatory</span>
+            on every image tag.
+          </p>
+
+          <pre>
+&lt;!-- span stays INSIDE the paragraph, no line break --&gt;
+&lt;p&gt;My name is &lt;span class="highlight"&gt;Lazik&lt;/span&gt;&lt;/p&gt;
+          </pre>
+
+
+          <!-- Visual difference summary -->
+          <h3>The key difference:</h3>
+
+          <pre>
+&lt;!-- div: BLOCK — each goes to a new line --&gt;
+&lt;div&gt;First div&lt;/div&gt;
+&lt;div&gt;Second div&lt;/div&gt;
+Output:
+  First div
+  Second div    ← new line automatically
+
+&lt;!-- span: INLINE — stays on the same line --&gt;
+&lt;p&gt;I love &lt;span&gt;HTML&lt;/span&gt; and &lt;span&gt;CSS&lt;/span&gt;&lt;/p&gt;
+Output:
+  I love HTML and CSS   ← everything on same line
+          </pre>
+
+          <div class="note">
+            📝 WHEN TO USE WHAT:<br>
+            div  → grouping sections, layout boxes, cards, page wrappers<br>
+            span → styling a single word, highlighting part of text<br><br>
+            Rule: if no semantic tag fits → div for block, span for inline<br>
+            Always try semantic tags FIRST before reaching for div
+          </div>
+
+        </div>
+
+
+        <!-- ── PRACTICE: FULL SEMANTIC BLOG PAGE ── -->
+
+        <div class="section-box" id="skills">
+
+          <h2>Practice — Full Semantic Blog Page</h2>
+          <p>
+            Everything below is your practice example.
+            Study it, then rebuild it from scratch in a new file
+            called <code>day3-practice.html</code>.
+          </p>
+
+          <!-- Complete semantic blog page demo -->
+
+          <article class="blog-card">
+
+            <header>
+              <!-- header inside article = header for THIS article -->
+              <h3>5 Things I Learned in My First Week of HTML</h3>
+              <p>
+                By <strong>Lazik Latief</strong> —
+                <time datetime="2024-04-03">April 3, 2024</time>
+              </p>
+            </header>
+
+            <figure>
+              <img
+                src="https://picsum.photos/500/200"
+                alt="Code on a laptop screen"
+                width="100%"
+              >
+              <figcaption>Writing HTML every day builds the habit</figcaption>
+            </figure>
+
+            <section>
+              <h3>1. Always write alt on images</h3>
+              <p>
+                The <code>alt</code> attribute is not optional.
+                It helps
+                <abbr title="Search Engine Optimization">SEO</abbr>
+                and accessibility.
+              </p>
+            </section>
+
+            <section>
+              <h3>2. Semantic tags matter</h3>
+              <p>
+                Using <code>&lt;nav&gt;</code>,
+                <code>&lt;main&gt;</code>, and
+                <code>&lt;footer&gt;</code> instead of
+                <code>&lt;div&gt;</code> everywhere makes your
+                code professional.
+              </p>
+            </section>
+
+            <blockquote>
+              <p>"The best way to learn HTML is to just build things."</p>
+            </blockquote>
+
+            <footer>
+              <!-- footer inside article = footer for THIS article -->
+              <p><small>Posted under: HTML, Learning, Frontend</small></p>
+            </footer>
+
+          </article>
+
+        </div>
+
+
+      </div>
+    </main>
+
+
+    <!-- ──────────────────────────────────────────────
+         SEMANTIC TAG: footer
+         Goes at the BOTTOM of the page
+         Contains: copyright, links, contact info
+    ────────────────────────────────────────────── -->
+
+    <footer id="contact">
+      <address>
+        <p>
+          &copy; 2024 Lazik Latief —
+          <a href="mailto:lazik@email.com">lazik@email.com</a> —
+          <a href="https://github.com" target="_blank">GitHub</a>
+        </p>
+      </address>
+    </footer>
+
+
+  </body>
+</html>
