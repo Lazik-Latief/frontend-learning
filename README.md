@@ -166,6 +166,93 @@ Every HTML file starts with this structure.
 - `method="POST"` for any sensitive data like passwords
 
 ---
+---
+
+# Frontend Learning Journey 🚀
+
+A personal repo to track my frontend development learning from zero to job-ready.
+
+**Learner:** Lazik Latief
+**Goal:** Frontend Developer Job
+**Stack:** HTML5 → CSS3 → JavaScript → React → Next.js
+
+---
+
+## Progress Tracker
+
+| Day | Topic | Status |
+|-----|-------|--------|
+| Day 1 | HTML Fundamentals | ✅ Done |
+| Day 2 | HTML Tables & Forms | ✅ Done |
+| Day 3 | Semantic Tags + Div & Span | ✅ Done |
+| Day 4 | HTML Attributes + Meta Tags | 🔄 Up next |
+
+---
+
+## HTML — Day 3 Topics
+
+### 1. What is Semantic HTML
+- Semantic means the tag describes the meaning of content, not just appearance
+- Helps Google understand your page better — improves SEO ranking
+- Helps screen readers work correctly for blind users
+- Makes code readable for other developers
+- Required standard in every professional project
+
+---
+
+### 2. Full Page Layout Tags
+- `<header>` — top of page, contains logo, title, main nav
+- `<nav>` — navigation links only, not every group of links
+- `<main>` — primary page content, use only ONCE per page
+- `<section>` — grouped content with a heading, part of bigger page
+- `<article>` — self-contained content, makes sense on its own
+- `<aside>` — side or extra related content, not essential to main
+- `<footer>` — bottom of page, copyright, links, contact
+
+---
+
+### 3. section vs article vs aside
+- `section` — content that needs the page for context, use for about, skills, contact blocks
+- `article` — content that stands alone anywhere, use for blog posts, news cards, product cards
+- `aside` — extra related info, use for sidebars, related links, tips
+- Quick test: ask "does this make sense on its own?" — yes = article, no = section, extra info = aside
+
+---
+
+### 4. Other Semantic Tags
+- `<figure>` + `<figcaption>` — image with a caption below it
+- `<time datetime="">` — date or time, datetime is for machines, text between tags is for humans
+- `<address>` — contact information block
+- `<abbr title="">` — abbreviation, full form appears on hover
+- `<blockquote>` — quoted content from another source
+- `<code>` — inline code snippet inside paragraph text
+- `<pre>` — preserves all spaces and line breaks exactly, used for code blocks
+
+---
+
+### 5. div vs span
+- `<div>` — block level, takes full width, starts on a new line, use for grouping and layout
+- `<span>` — inline level, stays inside text, no line break, use for styling a word or phrase
+- Always try semantic tags first before reaching for div or span
+- div for block grouping, span for inline targeting
+
+---
+
+## Key Rules to Always Remember
+
+- `h1` only once per page
+- Always write `alt` on every image, never skip it
+- `label for` must always match `input id`
+- `checkbox` = multiple selections allowed
+- `radio` = only one selection, all must share same `name`
+- `disabled` value is NOT sent, `readonly` value IS sent
+- `method="POST"` for any sensitive data like passwords
+- `<main>` only once per page
+- `<nav>` only for major navigation menus
+- Always use semantic tags before reaching for div or span
+- `article` = stands alone, `section` = needs page context
+
+---
 
 ## Projects Built
 
@@ -173,7 +260,10 @@ Every HTML file starts with this structure.
 |---------|------------|------|
 | Personal Bio Page | Headings, text, links, lists | day1-html-fundamentals.html |
 | Student Registration Form | Forms, inputs, tables | day2-tables-forms.html |
+| Semantic Blog Page | Semantic tags, div, span | day3-semantic-tags.html |
 
 ---
+
+*Updated daily as I learn. Every file in this repo was written by hand — no copy paste.*
 
 *Updated daily as I learn. Every file in this repo was written by hand — no copy paste.*
