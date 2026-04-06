@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- ============================================================
+         META TAGS — go inside head, never visible to users
+         but critical for SEO and social sharing
+    ============================================================ -->
+
+    <!-- charset: always FIRST — supports all characters, emoji, Hindi etc -->
+    <meta charset="UTF-8" />
+
+    <!-- viewport: makes page work correctly on mobile screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- description: shown in Google search results under page title -->
+    <!-- Keep it under 160 characters for best SEO results -->
+    <meta name="description" content="Lazik Latief — Frontend Developer from Srinagar learning HTML, CSS and JavaScript. Building real projects every day." />
+
+    <!-- keywords: less important today but still good practice -->
+    <meta name="keywords" content="frontend developer, HTML, CSS, JavaScript, React, Srinagar" />
+
+    <!-- author: who created this page -->
+    <meta name="author" content="Lazik Latief" />
+
+    <!-- robots: tells Google how to handle this page -->
+    <!-- index = add to search results | follow = follow links on page -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph tags: control how page looks when shared on
+         WhatsApp, Twitter, LinkedIn, Facebook -->
+    <meta property="og:title" content="Lazik Latief — Frontend Developer" />
+    <meta property="og:description" content="My frontend learning journey and portfolio projects." />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+    <meta property="og:url" content="https://laziklatief.github.io" />
+    <meta property="og:type" content="website" />
+
+    <!-- title: shown on browser tab AND in Google search results -->
+    <title>Day 4 — Attributes, id, class, data- & Meta Tags</title>
+
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body          { font-family: Arial, sans-serif; background: #f4f6fb; color: #222; line-height: 1.7; }
+
+      /* id selector in CSS uses # symbol */
+      #main-header  { background: #1a1a2e; color: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+      #main-header h1 { font-size: 20px; }
+
+      /* class selector in CSS uses . symbol */
+      .nav-link     { color: #a0c4ff; text-decoration: none; margin-left: 20px; font-size: 15px; }
+      .nav-link:hover { color: #fff; }
+
+      .page-wrapper { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+
+      h2            { color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 6px; margin: 36px 0 16px; }
+      h3            { color: #533483; margin: 20px 0 10px; }
+      p             { margin-bottom: 12px; }
+
+      .section-box  { background: #fff; border-left: 4px solid #0f3460; padding: 20px 24px; margin: 24px 0; border-radius: 6px; }
+      .note         { background: #fff8e1; border-left: 4px solid #f9a825; padding: 10px 16px; margin: 14px 0; border-radius: 4px; font-size: 14px; line-height: 1.8; }
+      code          { background: #f0f4ff; color: #c0392b; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 14px; }
+      pre           { background: #1a1a2e; color: #a8d8ea; padding: 16px 20px; border-radius: 6px; font-size: 14px; overflow-x: auto; margin: 12px 0; line-height: 1.8; }
+
+      /* .card class — reusable, shared by many elements */
+      .card         { background: #fff; border: 1px solid #dde3f0; border-radius: 8px; padding: 20px; margin: 12px 0; }
+      .card h3      { color: #0f3460; margin-top: 0; }
+
+      /* .featured class — added alongside .card for special cards */
+      .featured     { border-left: 4px solid #f9a825; background: #fffdf0; }
+
+      /* .badge class — small label tags -->
+      .badge        { display: inline-block; background: #e8f0fe; color: #0f3460; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 2px; }
+      .badge.html   { background: #fce8e6; color: #c0392b; }
+      .badge.css    { background: #e8f5e9; color: #27ae60; }
+      .badge.js     { background: #fff8e1; color: #f39c12; }
+
+      /* Cards grid layout */
+      .cards-grid   { display: flex; flex-wrap: wrap; gap: 16px; }
+      .cards-grid .card { flex: 1; min-width: 240px; }
+
+      /* Filter buttons */
+      .filter-group { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+      .filter-btn   { padding: 8px 18px; border: 1px solid #0f3460; background: #fff; color: #0f3460; border-radius: 20px; cursor: pointer; font-size: 14px; }
+      .filter-btn:hover,
+      .filter-btn.active { background: #0f3460; color: #fff; }
+
+      /* id-based section styling */
+      #about-section   { scroll-margin-top: 80px; }
+      #projects-section { scroll-margin-top: 80px; }
+      #contact-section  { scroll-margin-top: 80px; }
+
+      /* Comparison table */
+      table         { border-collapse: collapse; width: 100%; margin: 16px 0; }
+      th, td        { border: 1px solid #ccc; padding: 10px 14px; text-align: left; font-size: 14px; }
+      th            { background: #0f3460; color: #fff; }
+      tr:nth-child(even) td { background: #f0f4ff; }
+
+      #main-footer  { background: #1a1a2e; color: #aaa; text-align: center; padding: 24px; margin-top: 40px; font-size: 14px; }
+      #main-footer a { color: #a0c4ff; text-decoration: none; }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- ============================================================
+         DAY 4 — ATTRIBUTES, id, class, data- & META TAGS
+         Topics covered:
+           1. HTML Attributes — what they are and how they work
+           2. The id attribute — unique targeting
+           3. The class attribute — reusable styling
+           4. id vs class — key differences
+           5. The data- attribute — storing custom data
+           6. Meta tags — SEO and social sharing
+    ============================================================ -->
+
+
+    <!-- ──────────────────────────────────────────────
+         id="main-header"
+         Using id here because there is only ONE main
+         header on the page — unique element
+    ────────────────────────────────────────────── -->
+
+    <header id="main-header">
+      <h1>Lazik Latief</h1>
+
+      <nav>
+        <!-- href="#id-name" jumps to the section with that id -->
+        <!-- This is one of the most common uses of id -->
+        <a href="#about-section"    class="nav-link">About</a>
+        <a href="#projects-section" class="nav-link">Projects</a>
+        <a href="#contact-section"  class="nav-link">Contact</a>
+      </nav>
+    </header>
+
+
+    <main>
+      <div class="page-wrapper">
+
+
+        <!-- ── TOPIC 1: WHAT ARE HTML ATTRIBUTES ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 1 — What are HTML Attributes?</h2>
+
+          <p>
+            Attributes give <strong>extra information</strong> about
+            an element. They always go inside the opening tag.
+          </p>
+
+          <pre>
+&lt;!-- Structure --&gt;
+&lt;tag attribute="value"&gt;content&lt;/tag&gt;
+
+&lt;!-- Real examples --&gt;
+&lt;a href="https://google.com" target="_blank"&gt;Google&lt;/a&gt;
+    ↑ attr name  ↑ attr value   ↑ second attribute
+
+&lt;img src="photo.jpg" alt="My photo" width="300"&gt;
+      ↑ attr1          ↑ attr2        ↑ attr3
+          </pre>
+
+          <h3>Boolean attributes — no value needed</h3>
+
+          <pre>
+&lt;!-- These attributes work by just being present --&gt;
+&lt;input type="checkbox" checked&gt;   &lt;!-- already ticked --&gt;
+&lt;input type="text"     disabled&gt;  &lt;!-- not editable --&gt;
+&lt;input type="text"     required&gt;  &lt;!-- must be filled --&gt;
+&lt;video controls&gt;&lt;/video&gt;          &lt;!-- show play button --&gt;
+          </pre>
+
+          <!-- Live demo of boolean attributes -->
+          <h3>Live demo:</h3>
+          <p>
+            <input type="checkbox" checked> Already checked (checked attribute)<br><br>
+            <input type="text" value="Cannot edit" disabled> Disabled field<br><br>
+            <input type="text" placeholder="This is required" required>
+            Required field (try submitting empty)
+          </p>
+
+          <div class="note">
+            📝 RULES FOR ATTRIBUTES:<br>
+            Always go in the OPENING tag only, never closing tag<br>
+            Always use double quotes around values<br>
+            Boolean attributes need no value — just write the name
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 2: THE id ATTRIBUTE ── -->
+
+        <div class="section-box" id="about-section">
+          <!--
+            id="about-section" used here so the nav link
+            href="#about-section" can jump to this exact section
+          -->
+
+          <h2>Topic 2 — The id Attribute</h2>
+
+          <p>
+            <code>id</code> gives an element a
+            <strong>unique name.</strong> Like an Aadhar card —
+            only ONE person can have that number.
+            Only ONE element per page can have a specific id.
+          </p>
+
+          <pre>
+&lt;!-- id must be UNIQUE — no two elements same id on one page --&gt;
+&lt;header  id="main-header"&gt;...&lt;/header&gt;
+&lt;section id="about"&gt;...&lt;/section&gt;
+&lt;section id="projects"&gt;...&lt;/section&gt;
+&lt;footer  id="contact"&gt;...&lt;/footer&gt;
+          </pre>
+
+          <h3>3 main uses of id:</h3>
+
+          <pre>
+&lt;!-- USE 1: Anchor link jumps to section --&gt;
+&lt;a href="#about"&gt;Go to About&lt;/a&gt;
+&lt;section id="about"&gt;About content&lt;/section&gt;
+
+&lt;!-- USE 2: Target with CSS using # symbol --&gt;
+&lt;style&gt;
+  #main-header { background: #1a1a2e; color: white; }
+&lt;/style&gt;
+
+&lt;!-- USE 3: Target with JavaScript --&gt;
+&lt;script&gt;
+  const header = document.getElementById("main-header");
+  header.style.background = "red";
+&lt;/script&gt;
+          </pre>
+
+          <div class="note">
+            📝 id RULES:<br>
+            Must be UNIQUE — only one element per id on a page<br>
+            No spaces — use hyphens: id="my-section" not id="my section"<br>
+            Case sensitive — id="About" is different from id="about"<br>
+            Start with a letter, not a number<br>
+            CSS selector: #idname (hash symbol)
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 3: THE class ATTRIBUTE ── -->
+
+        <div class="section-box" id="projects-section">
+
+          <h2>Topic 3 — The class Attribute</h2>
+
+          <p>
+            <code>class</code> gives elements a
+            <strong>shared label.</strong> Like a school
+            uniform — many students wear it.
+            Multiple elements CAN share the same class.
+          </p>
+
+          <pre>
+&lt;!-- Multiple elements sharing the SAME class --&gt;
+&lt;div class="card"&gt;Project 1&lt;/div&gt;
+&lt;div class="card"&gt;Project 2&lt;/div&gt;
+&lt;div class="card"&gt;Project 3&lt;/div&gt;
+
+&lt;!-- One element with MULTIPLE classes --&gt;
+&lt;div class="card featured large"&gt;Special Project&lt;/div&gt;
+&lt;!--              ↑ 3 classes separated by spaces --&gt;
+          </pre>
+
+          <!-- Live demo of class -->
+          <h3>Live demo — cards sharing the same class:</h3>
+
+          <div class="cards-grid">
+
+            <!-- All three use class="card" — same styling applied -->
+            <div class="card">
+              <h3>Project One</h3>
+              <p>Personal bio page built with HTML.</p>
+              <span class="badge html">HTML</span>
+            </div>
+
+            <!-- This one has TWO classes: card + featured -->
+            <!-- card gives base style, featured adds extra style -->
+            <div class="card featured">
+              <h3>Project Two ⭐</h3>
+              <p>Student registration form with tables.</p>
+              <span class="badge html">HTML</span>
+              <span class="badge css">CSS</span>
+            </div>
+
+            <div class="card">
+              <h3>Project Three</h3>
+              <p>Semantic blog page with full layout.</p>
+              <span class="badge html">HTML</span>
+              <span class="badge css">CSS</span>
+              <span class="badge js">JS</span>
+            </div>
+
+          </div>
+
+          <pre>
+&lt;!-- CSS targets ALL elements with that class --&gt;
+&lt;style&gt;
+  .card     { background: white; border: 1px solid #ccc; }
+  .featured { border-left: 4px solid gold; }
+  /* . symbol = class in CSS */
+&lt;/style&gt;
+
+&lt;!-- JS targets ALL elements with that class --&gt;
+&lt;script&gt;
+  const allCards = document.querySelectorAll(".card");
+  // returns a list of all 3 card elements
+&lt;/script&gt;
+          </pre>
+
+          <div class="note">
+            📝 class RULES:<br>
+            Many elements CAN share the same class — that is the point<br>
+            One element can have MULTIPLE classes — separate with space<br>
+            CSS selector: .classname (dot symbol)<br>
+            JS selector: querySelectorAll(".classname")
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 4: id vs class COMPARISON ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 4 — id vs class (Common Interview Question)</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>id</th>
+                <th>class</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Uniqueness</td>
+                <td>One element only per page</td>
+                <td>Many elements can share it</td>
+              </tr>
+              <tr>
+                <td>CSS selector</td>
+                <td>#idname (hash)</td>
+                <td>.classname (dot)</td>
+              </tr>
+              <tr>
+                <td>JS — get one</td>
+                <td>getElementById("name")</td>
+                <td>querySelector(".name")</td>
+              </tr>
+              <tr>
+                <td>JS — get all</td>
+                <td>Not applicable</td>
+                <td>querySelectorAll(".name")</td>
+              </tr>
+              <tr>
+                <td>Best used for</td>
+                <td>Unique sections, anchor links</td>
+                <td>Reusable styles, components</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre>
+&lt;!-- Using BOTH on same element — totally fine and common --&gt;
+&lt;section id="about-section" class="section-box dark-bg"&gt;
+  About content here
+&lt;/section&gt;
+&lt;!--
+  id="about-section" → targets it uniquely (anchor links, JS)
+  class="section-box dark-bg" → applies shared styles
+--&gt;
+          </pre>
+
+          <div class="note">
+            📝 SIMPLE RULE TO REMEMBER:<br>
+            id = unique individual (like your name)<br>
+            class = group label (like your job title)<br>
+            You can have both on the same element — very common in real projects
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 5: data- ATTRIBUTE ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 5 — The data- Attribute</h2>
+
+          <p>
+            <code>data-</code> lets you store
+            <strong>custom data</strong> inside HTML elements.
+            Used heavily in real projects with JavaScript.
+            You can name it anything after <code>data-</code>.
+          </p>
+
+          <pre>
+&lt;!-- Store any custom info on elements --&gt;
+&lt;div
+  class="product-card"
+  data-id="101"
+  data-price="999"
+  data-category="electronics"
+&gt;
+  iPhone Case
+&lt;/div&gt;
+
+&lt;!-- Access in JavaScript --&gt;
+&lt;script&gt;
+  const card = document.querySelector(".product-card");
+
+  console.log(card.dataset.id);        // "101"
+  console.log(card.dataset.price);     // "999"
+  console.log(card.dataset.category);  // "electronics"
+
+  // dataset.anything matches data-anything in HTML
+&lt;/script&gt;
+          </pre>
+
+          <!-- Live demo: filter buttons using data-filter -->
+          <h3>Live demo — filter buttons using data-filter:</h3>
+          <p>This pattern is used in real portfolio and e-commerce sites.</p>
+
+          <div class="filter-group">
+            <!--
+              Each button stores what it filters in data-filter
+              JavaScript reads data-filter to know what to show/hide
+            -->
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="html">HTML</button>
+            <button class="filter-btn" data-filter="css">CSS</button>
+            <button class="filter-btn" data-filter="js">JavaScript</button>
+          </div>
+
+          <!-- Project cards with data-category for filtering -->
+          <div class="cards-grid" id="projects-grid">
+
+            <div class="card" data-id="1" data-category="html" data-difficulty="beginner">
+              <h3>Bio Page</h3>
+              <p>Personal biography page.</p>
+              <span class="badge html">HTML</span>
+              <p><small>data-id="1" | data-category="html"</small></p>
+            </div>
+
+            <div class="card" data-id="2" data-category="css" data-difficulty="intermediate">
+              <h3>Landing Page</h3>
+              <p>Responsive product landing page.</p>
+              <span class="badge css">CSS</span>
+              <p><small>data-id="2" | data-category="css"</small></p>
+            </div>
+
+            <div class="card" data-id="3" data-category="js" data-difficulty="intermediate">
+              <h3>Todo App</h3>
+              <p>Add, complete, delete tasks.</p>
+              <span class="badge js">JS</span>
+              <p><small>data-id="3" | data-category="js"</small></p>
+            </div>
+
+          </div>
+
+          <div class="note">
+            📝 data- RULES:<br>
+            Name it anything: data-id, data-price, data-color, data-action<br>
+            Value is always a string in HTML<br>
+            Access in JS: element.dataset.id (remove "data-" prefix)<br>
+            data-my-price → dataset.myPrice (hyphen becomes camelCase in JS)<br><br>
+            REAL WORLD USE:<br>
+            E-commerce → store product id and price on cards<br>
+            Buttons → store what action to perform on click<br>
+            Filters → store category to show or hide elements
+          </div>
+
+        </div>
+
+
+        <!-- ── TOPIC 6: META TAGS ── -->
+
+        <div class="section-box">
+
+          <h2>Topic 6 — Meta Tags</h2>
+
+          <p>
+            Meta tags go inside <code>&lt;head&gt;</code>.
+            Users never see them but they control how Google
+            finds your page and how it looks when shared on
+            WhatsApp or LinkedIn.
+          </p>
+
+          <pre>
+&lt;head&gt;
+
+  &lt;!-- 1. charset — always FIRST, supports all characters --&gt;
+  &lt;meta charset="UTF-8"&gt;
+
+  &lt;!-- 2. viewport — mobile support, always include --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;!-- 3. description — shown in Google search results --&gt;
+  &lt;!-- Keep under 160 characters --&gt;
+  &lt;meta name="description" content="Lazik Latief — Frontend Developer."&gt;
+
+  &lt;!-- 4. keywords — less important now but still used --&gt;
+  &lt;meta name="keywords" content="HTML, CSS, JavaScript, frontend"&gt;
+
+  &lt;!-- 5. author — who made this page --&gt;
+  &lt;meta name="author" content="Lazik Latief"&gt;
+
+  &lt;!-- 6. robots — tell Google how to handle this page --&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+
+  &lt;!-- 7. Open Graph — how page looks on WhatsApp, LinkedIn --&gt;
+  &lt;meta property="og:title"       content="Lazik — Frontend Dev"&gt;
+  &lt;meta property="og:description" content="My portfolio and blog."&gt;
+  &lt;meta property="og:image"       content="https://yoursite.com/preview.jpg"&gt;
+  &lt;meta property="og:url"         content="https://yoursite.com"&gt;
+
+  &lt;!-- 8. title — browser tab + Google result title --&gt;
+  &lt;title&gt;Lazik Latief — Frontend Developer&lt;/title&gt;
+
+&lt;/head&gt;
+          </pre>
+
+          <div class="note">
+            📝 WHY META TAGS MATTER FOR YOUR CAREER:<br>
+            description → shown in Google search — affects how many people click<br>
+            og:image → the preview image when you share portfolio on WhatsApp<br>
+            og:title → the bold title shown in link previews<br>
+            viewport → without this, your page looks broken on mobile<br>
+            charset → without this, special characters show as weird symbols<br><br>
+            Your portfolio site NEEDS all of these — recruiters share links.
+          </div>
+
+        </div>
+
+
+        <!-- ── PRACTICE SECTION ── -->
+
+        <div class="section-box" id="contact-section">
+
+          <h2>Practice — All Topics Combined</h2>
+
+          <p>
+            This entire page IS your practice reference.
+            Notice how every major section has an
+            <code>id</code>, every reusable style uses
+            <code>class</code>, every card has
+            <code>data-</code> attributes, and the head
+            has complete meta tags.
+          </p>
+
+          <h3>Your task — build day4-practice.html with:</h3>
+
+          <ul style="margin: 12px 0 0 20px; line-height: 2;">
+            <li>Complete meta tags in head — charset, viewport, description, og tags</li>
+            <li>A nav with anchor links jumping to sections using id</li>
+            <li>3 project cards using <code>class="card"</code></li>
+            <li>Each card with <code>data-id</code> and <code>data-category</code></li>
+            <li>One element using both id and class together</li>
+            <li>Filter buttons each with a <code>data-filter</code> attribute</li>
+            <li>At least one boolean attribute — required, checked, or disabled</li>
+          </ul>
+
+        </div>
+
+
+      </div>
+    </main>
+
+
+    <!-- id="main-footer" — unique footer, targeted by CSS with #main-footer -->
+    <footer id="main-footer">
+      <p>
+        &copy; 2024 Lazik Latief —
+        <a href="mailto:lazik@email.com">lazik@email.com</a> —
+        <a href="https://github.com" target="_blank">GitHub</a>
+      </p>
+    </footer>
+
+
+  </body>
+</html>
