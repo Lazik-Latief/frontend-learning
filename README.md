@@ -14,7 +14,8 @@ A personal repo to track my frontend development learning from zero to job-ready
 |-----|-------|--------|
 | Day 1 | HTML Fundamentals | ✅ Done |
 | Day 2 | HTML Tables & Forms | ✅ Done |
-| Day 3 | Semantic Tags + Div/Span | 🔄 Up next |
+| Day 3 | Semantic Tags + Div & Span | ✅ Done |
+| Day 4 | HTML Attributes + id, class, data- + Meta Tags | ✅ Done |
 
 ---
 
@@ -178,14 +179,6 @@ A personal repo to track my frontend development learning from zero to job-ready
 
 ---
 
-## Progress Tracker
-
-| Day | Topic | Status |
-|-----|-------|--------|
-| Day 1 | HTML Fundamentals | ✅ Done |
-| Day 2 | HTML Tables & Forms | ✅ Done |
-| Day 3 | Semantic Tags + Div & Span | ✅ Done |
-| Day 4 | HTML Attributes + Meta Tags | 🔄 Up next |
 
 ---
 
@@ -251,6 +244,88 @@ A personal repo to track my frontend development learning from zero to job-ready
 - `<nav>` only for major navigation menus
 - Always use semantic tags before reaching for div or span
 - `article` = stands alone, `section` = needs page context
+
+---
+
+ 
+## HTML — Day 4 Topics
+
+### 1. HTML Attributes
+- Attributes give extra information about an element
+- Always go inside the opening tag, never the closing tag
+- Always use double quotes around values
+- Boolean attributes need no value — just write the name: `checked`, `disabled`, `required`
+
+---
+
+### 2. The id Attribute
+- Gives an element a unique name — only ONE element per id on a page
+- Used for anchor links: `href="#section-id"` jumps to that section
+- CSS selector: `#idname` (hash symbol)
+- JS selector: `document.getElementById("idname")`
+- No spaces in id — use hyphens: `id="my-section"`
+- Case sensitive — `id="About"` is different from `id="about"`
+
+---
+
+### 3. The class Attribute
+- Gives elements a shared label — many elements can share the same class
+- One element can have multiple classes — separate with a space: `class="card featured large"`
+- CSS selector: `.classname` (dot symbol)
+- JS selector: `document.querySelectorAll(".classname")`
+- Use class for reusable styles and components
+
+---
+
+### 4. id vs class
+- id = unique individual, one element only, use for sections and anchor links
+- class = shared group label, many elements, use for reusable styles
+- CSS: `#id` uses hash, `.class` uses dot
+- Can use both on same element: `<section id="about" class="section-box">`
+
+---
+
+### 5. The data- Attribute
+- Stores custom data inside HTML elements: `data-id="101"` `data-price="999"`
+- Name it anything after data-: `data-category`, `data-action`, `data-color`
+- Access in JS: `element.dataset.id` — remove the "data-" prefix
+- Hyphen becomes camelCase in JS: `data-my-price` → `dataset.myPrice`
+- Real world use: product cards, filter buttons, action buttons
+
+---
+
+### 6. Meta Tags
+- Go inside `<head>`, never visible to users
+- `charset="UTF-8"` — always first, supports all characters
+- `name="viewport"` — mobile support, always include
+- `name="description"` — shown in Google search results, keep under 160 characters
+- `name="keywords"` — less important now but still good practice
+- `name="author"` — who created the page
+- `name="robots" content="index, follow"` — tells Google to index and follow links
+- `property="og:title"` — title shown when link is shared on WhatsApp or LinkedIn
+- `property="og:description"` — description in link previews
+- `property="og:image"` — preview image when link is shared
+- `property="og:url"` — the canonical URL of the page
+
+---
+
+## Key Rules to Always Remember
+
+- `h1` only once per page
+- Always write `alt` on every image, never skip it
+- `label for` must always match `input id`
+- `checkbox` = multiple selections allowed
+- `radio` = only one selection, all must share same `name`
+- `disabled` value is NOT sent, `readonly` value IS sent
+- `method="POST"` for any sensitive data like passwords
+- `<main>` only once per page
+- `<nav>` only for major navigation menus
+- Always use semantic tags before reaching for div or span
+- `article` = stands alone, `section` = needs page context
+- `id` = unique, one per page — `class` = shared, many elements
+- Boolean attributes need no value — `checked`, `disabled`, `required`
+- Always include charset, viewport, description meta tags on every page
+- `data-anything` stores custom data, access via `dataset.anything` in JS
 
 ---
 
