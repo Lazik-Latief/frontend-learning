@@ -152,3 +152,121 @@ if (userAge >= 18) {
 } else {
   console.log("Limited access (under 18)");
 }
+
+// Day 3 - Functions (Basics to Real Use)
+
+console.log("=== BASIC FUNCTIONS ===");
+
+// 1. Simple function
+function sayHello() {
+  console.log("Hello World 👋");
+}
+sayHello();
+
+
+// 2. Function with parameter
+function greet(name) {
+  console.log(`Hello, ${name}`);
+}
+greet("Lazik");
+
+
+// 3. Function with return
+function add(a, b) {
+  return a + b;
+}
+
+let sum = add(10, 5);
+console.log("Sum:", sum);
+
+
+// 4. Arrow function
+const subtract = (a, b) => {
+  return a - b;
+};
+
+console.log("Subtract:", subtract(10, 3));
+
+
+console.log("\n=== REAL WORLD FUNCTIONS ===");
+
+// 5. Calculator function
+function calculator(a, b, operator) {
+  if (operator === "+") {
+    return a + b;
+  } else if (operator === "-") {
+    return a - b;
+  } else if (operator === "*") {
+    return a * b;
+  } else if (operator === "/") {
+    return a / b;
+  } else {
+    return "Invalid operator";
+  }
+}
+
+console.log("Calc:", calculator(10, 5, "+"));
+
+
+// 6. Even or Odd function
+function isEven(num) {
+  if (num % 2 === 0) {
+    return "Even";
+  } else {
+    return "Odd";
+  }
+}
+
+console.log("Check:", isEven(7));
+
+
+// 7. Login check function
+function login(user, pass) {
+  if (user === "lazik" && pass === "1234") {
+    return "Login Successful ✅";
+  } else {
+    return "Login Failed ❌";
+  }
+}
+
+console.log(login("lazik", "1234"));
+
+
+// 8. Discount function
+function getDiscount(amount) {
+  if (amount > 1000) {
+    return "20% Discount";
+  } else if (amount > 500) {
+    return "10% Discount";
+  } else {
+    return "No Discount";
+  }
+}
+
+console.log(getDiscount(1200));
+
+
+console.log("\n=== LOOP + FUNCTION ===");
+
+// 9. Print numbers using function
+function printNumbers(n) {
+  for (let i = 1; i <= n; i++) {
+    console.log(i);
+  }
+}
+
+printNumbers(5);
+
+
+// 10. Sum of array
+function sumArray(arr) {
+  let total = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+
+  return total;
+}
+
+console.log("Array Sum:", sumArray([1,2,3,4,5]));
