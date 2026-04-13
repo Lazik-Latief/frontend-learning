@@ -270,3 +270,128 @@ function sumArray(arr) {
 }
 
 console.log("Array Sum:", sumArray([1,2,3,4,5]));
+
+
+
+// Day 4 - Arrays & Methods
+
+console.log("=== ARRAY BASICS ===");
+
+// 1. Create an array
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits);
+console.log("First fruit:", fruits[0]);
+
+
+// 2. Add & Remove elements
+fruits.push("Orange");   // add at end
+fruits.pop();            // remove from end
+
+console.log("Updated fruits:", fruits);
+
+
+// 3. Length
+console.log("Total fruits:", fruits.length);
+
+
+console.log("\n=== LOOP THROUGH ARRAY ===");
+
+// 4. Loop through array
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+
+
+console.log("\n=== ARRAY METHODS (IMPORTANT) ===");
+
+// 5. map() → create new array
+let numbers = [1, 2, 3, 4];
+
+let doubled = numbers.map((num) => {
+  return num * 2;
+});
+
+console.log("Doubled:", doubled);
+
+
+// 6. filter() → filter values
+let evenNumbers = numbers.filter((num) => {
+  return num % 2 === 0;
+});
+
+console.log("Even numbers:", evenNumbers);
+
+
+// 7. forEach() → loop (no return)
+numbers.forEach((num) => {
+  console.log("Number:", num);
+});
+
+
+console.log("\n=== REAL WORLD EXAMPLES ===");
+
+// 8. Cart total
+let prices = [100, 200, 300];
+let total = 0;
+
+prices.forEach((price) => {
+  total += price;
+});
+
+console.log("Total cart value:", total);
+
+
+// 9. Find expensive items
+let items = [100, 500, 1000, 200];
+
+let expensive = items.filter((item) => {
+  return item > 300;
+});
+
+console.log("Expensive items:", expensive);
+
+
+// 10. Convert names to uppercase
+let names = ["lazik", "ali", "john"];
+
+let upperNames = names.map((name) => {
+  return name.toUpperCase();
+});
+
+console.log("Uppercase names:", upperNames);
+
+
+console.log("\n=== MINI CHALLENGES ===");
+
+// 11. Sum of array
+let arr = [1, 2, 3, 4, 5];
+let sum = 0;
+
+arr.forEach((n) => {
+  sum += n;
+});
+
+console.log("Sum:", sum);
+
+
+// 12. Count even numbers
+let count = 0;
+
+arr.forEach((n) => {
+  if (n % 2 === 0) count++;
+});
+
+console.log("Even count:", count);
+
+
+// 13. Find max number
+let max = arr[0];
+
+arr.forEach((n) => {
+  if (n > max) {
+    max = n;
+  }
+});
+
+console.log("Max number:", max);
