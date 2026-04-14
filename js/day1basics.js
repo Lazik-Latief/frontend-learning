@@ -1,397 +1,204 @@
-// Day 1 - JavaScript Basics
+// 📘 JavaScript Days 1–6 (Cleaned + Well Commented)
 
-// 1. Variables
-let name = "Lazik";
+// =====================================================
+// DAY 1 – BASICS
+// =====================================================
+
+// Variables (use const if value won't change)
+const name = "Lazik";
 const age = 21;
-let city = "Srinagar";
+let city = "Srinagar"; // can change later
 
-// 2. Output
+// Output
 console.log("=== Basic Info ===");
 console.log(name);
 console.log(age);
 console.log(city);
 
-// 3. Data Types
-let isStudent = true;
-
+// Data Types
+const isStudent = true;
 console.log("\n=== Data Types ===");
-console.log("Name:", typeof name);
-console.log("Age:", typeof age);
-console.log("Is Student:", typeof isStudent);
+console.log("Name:", typeof name);   // string
+console.log("Age:", typeof age);     // number
+console.log("Is Student:", typeof isStudent); // boolean
 
-// 4. Math Operations
-let a = 10;
-let b = 5;
-
+// Math Operations
+const a = 10;
+const b = 5;
 console.log("\n=== Math Operations ===");
 console.log("Sum:", a + b);
 console.log("Difference:", a - b);
 console.log("Multiplication:", a * b);
 
-// 5. Boolean Output
-let isLearning = true;
-
-console.log("\n=== Learning Status ===");
-console.log("I am learning JavaScript:", isLearning);
-
-// 6. Template Literals (IMPORTANT)
+// Template Literals (clean + modern way)
 console.log("\n=== Final Output ===");
 console.log(`My name is ${name}, I am ${age} years old and I live in ${city}.`);
 
+// =====================================================
+// DAY 2 – CONDITIONS + LOOPS
+// =====================================================
 
-// Day 2 - Real World Examples (Conditions + Loops)
+console.log("\n=== REAL WORLD LOGIC ===");
 
-console.log("=== REAL WORLD LOGIC ===");
-
-// 1. Login System (basic check)
-let username = "lazik";
-let password = "1234";
+// Login System (never hardcode passwords in real apps ⚠️)
+const username = "lazik";
+const password = "1234";
 
 if (username === "lazik" && password === "1234") {
-  console.log("Login Successful ✅");
+console.log("Login Successful ✅");
 } else {
-  console.log("Invalid Credentials ❌");
+console.log("Invalid Credentials ❌");
 }
 
-
-// 2. E-commerce Discount System
-let amount = 1200;
-
+// Discount System
+const amount = 1200;
 if (amount > 1000) {
-  console.log("You got 20% discount 🎉");
+console.log("20% discount");
 } else if (amount > 500) {
-  console.log("You got 10% discount");
+console.log("10% discount");
 } else {
-  console.log("No discount");
+console.log("No discount");
 }
 
+// Traffic Light
+const signal = "red";
+if (signal === "red") console.log("Stop 🚫");
+else if (signal === "yellow") console.log("Ready ⚠️");
+else console.log("Go 🚀");
 
-// 3. Traffic Light System
-let signal = "red";
-
-if (signal === "red") {
-  console.log("Stop 🚫");
-} else if (signal === "yellow") {
-  console.log("Get Ready ⚠️");
-} else if (signal === "green") {
-  console.log("Go 🚀");
-}
-
-
-// 4. Simple ATM Withdrawal Check
+// ATM Logic
 let balance = 5000;
-let withdraw = 2000;
-
+const withdraw = 2000;
 if (withdraw <= balance) {
-  console.log("Withdrawal successful 💰");
-  balance = balance - withdraw;
-  console.log("Remaining balance:", balance);
+balance -= withdraw; // shorthand
+console.log("Remaining:", balance);
 } else {
-  console.log("Insufficient balance ❌");
+console.log("Insufficient balance");
 }
 
-
-console.log("\n=== LOOP BASED REAL EXAMPLES ===");
-
-// 5. Print cart items
-let cart = ["Shirt", "Shoes", "Watch"];
-
+// Loop – Cart Items
+const cart = ["Shirt", "Shoes", "Watch"];
 for (let i = 0; i < cart.length; i++) {
-  console.log("Item:", cart[i]);
+console.log(cart[i]);
 }
 
-
-// 6. Count total price (simple)
-let prices = [100, 200, 300];
-let total = 0;
-
-for (let i = 0; i < prices.length; i++) {
-  total += prices[i];
+// Loop – Sum
+const prices1 = [100, 200, 300];
+let total1 = 0;
+for (let i = 0; i < prices1.length; i++) {
+total1 += prices1[i];
 }
-console.log("Total price:", total);
+console.log("Total:", total1);
 
-
-// 7. Find even numbers from list
-let numbers = [1,2,3,4,5,6,7,8];
-
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] % 2 === 0) {
-    console.log("Even:", numbers[i]);
-  }
-}
-
-
-// 8. Password attempts (loop simulation)
+// While loop
 let attempts = 3;
-
 while (attempts > 0) {
-  console.log("Try login... Attempts left:", attempts);
-  attempts--;
+console.log("Attempts left:", attempts);
+attempts--;
 }
 
-console.log("Account locked 🔒");
+// =====================================================
+// DAY 3 – FUNCTIONS
+// =====================================================
 
-
-console.log("\n=== MINI APP LOGIC ===");
-
-// 9. Simple username greeting
-let user = "Lazik";
-
-if (user) {
-  console.log(`Welcome back, ${user} 👋`);
-} else {
-  console.log("Please login");
-}
-
-
-// 10. Age-based app access
-let userAge = 16;
-
-if (userAge >= 18) {
-  console.log("Access granted to full features");
-} else {
-  console.log("Limited access (under 18)");
-}
-
-// Day 3 - Functions (Basics to Real Use)
-
-console.log("=== BASIC FUNCTIONS ===");
-
-// 1. Simple function
+// Simple Function
 function sayHello() {
-  console.log("Hello World 👋");
+console.log("Hello World");
 }
 sayHello();
 
-
-// 2. Function with parameter
-function greet(name) {
-  console.log(`Hello, ${name}`);
+// Function with parameter
+function greet(userName) {
+console.log(`Hello, ${userName}`);
 }
 greet("Lazik");
 
-
-// 3. Function with return
-function add(a, b) {
-  return a + b;
+// Function with return
+function add(x, y) {
+return x + y;
 }
+console.log("Sum:", add(10, 5));
 
-let sum = add(10, 5);
-console.log("Sum:", sum);
-
-
-// 4. Arrow function
-const subtract = (a, b) => {
-  return a - b;
-};
-
+// Arrow Function (shorter syntax)
+const subtract = (x, y) => x - y;
 console.log("Subtract:", subtract(10, 3));
 
-
-console.log("\n=== REAL WORLD FUNCTIONS ===");
-
-// 5. Calculator function
-function calculator(a, b, operator) {
-  if (operator === "+") {
-    return a + b;
-  } else if (operator === "-") {
-    return a - b;
-  } else if (operator === "*") {
-    return a * b;
-  } else if (operator === "/") {
-    return a / b;
-  } else {
-    return "Invalid operator";
-  }
+// Calculator Function
+function calculator(x, y, op) {
+switch (op) {
+case "+": return x + y;
+case "-": return x - y;
+case "*": return x * y;
+case "/": return y !== 0 ? x / y : "Divide by 0";
+default: return "Invalid";
 }
-
-console.log("Calc:", calculator(10, 5, "+"));
-
-
-// 6. Even or Odd function
-function isEven(num) {
-  if (num % 2 === 0) {
-    return "Even";
-  } else {
-    return "Odd";
-  }
 }
+console.log(calculator(10, 5, "+"));
 
-console.log("Check:", isEven(7));
+// =====================================================
+// DAY 4 – ARRAYS
+// =====================================================
 
+const fruits = ["Apple", "Banana", "Mango"];
 
-// 7. Login check function
-function login(user, pass) {
-  if (user === "lazik" && pass === "1234") {
-    return "Login Successful ✅";
-  } else {
-    return "Login Failed ❌";
-  }
-}
+// Add / Remove
+fruits.push("Orange"); // add
+fruits.pop(); // remove last
 
-console.log(login("lazik", "1234"));
-
-
-// 8. Discount function
-function getDiscount(amount) {
-  if (amount > 1000) {
-    return "20% Discount";
-  } else if (amount > 500) {
-    return "10% Discount";
-  } else {
-    return "No Discount";
-  }
-}
-
-console.log(getDiscount(1200));
-
-
-console.log("\n=== LOOP + FUNCTION ===");
-
-// 9. Print numbers using function
-function printNumbers(n) {
-  for (let i = 1; i <= n; i++) {
-    console.log(i);
-  }
-}
-
-printNumbers(5);
-
-
-// 10. Sum of array
-function sumArray(arr) {
-  let total = 0;
-
-  for (let i = 0; i < arr.length; i++) {
-    total += arr[i];
-  }
-
-  return total;
-}
-
-console.log("Array Sum:", sumArray([1,2,3,4,5]));
-
-
-
-// Day 4 - Arrays & Methods
-
-console.log("=== ARRAY BASICS ===");
-
-// 1. Create an array
-let fruits = ["Apple", "Banana", "Mango"];
-
-console.log(fruits);
-console.log("First fruit:", fruits[0]);
-
-
-// 2. Add & Remove elements
-fruits.push("Orange");   // add at end
-fruits.pop();            // remove from end
-
-console.log("Updated fruits:", fruits);
-
-
-// 3. Length
-console.log("Total fruits:", fruits.length);
-
-
-console.log("\n=== LOOP THROUGH ARRAY ===");
-
-// 4. Loop through array
+// Loop
 for (let i = 0; i < fruits.length; i++) {
-  console.log(fruits[i]);
+console.log(fruits[i]);
 }
 
+// Array Methods
+const nums = [1, 2, 3, 4];
 
-console.log("\n=== ARRAY METHODS (IMPORTANT) ===");
+// map → transform
+const doubled = nums.map(n => n * 2);
 
-// 5. map() → create new array
-let numbers = [1, 2, 3, 4];
+// filter → condition
+const even = nums.filter(n => n % 2 === 0);
 
-let doubled = numbers.map((num) => {
-  return num * 2;
-});
+// forEach → loop
+nums.forEach(n => console.log(n));
 
-console.log("Doubled:", doubled);
+// =====================================================
+// DAY 6 – ADVANCED ARRAY + OBJECTS
+// =====================================================
 
+// Object
+const person = {
+name: "Ali",
+age: 20,
+greet() {
+console.log("Hello " + this.name);
+}
+};
+person.greet();
 
-// 6. filter() → filter values
-let evenNumbers = numbers.filter((num) => {
-  return num % 2 === 0;
-});
+// Destructuring
+const arr = [1, 2, 3];
+const [x, y] = arr;
 
-console.log("Even numbers:", evenNumbers);
+// Spread
+const arr2 = [...arr, 4];
 
+// Rest
+function sumAll(...nums2) {
+return nums2.reduce((a, b) => a + b, 0);
+}
 
-// 7. forEach() → loop (no return)
-numbers.forEach((num) => {
-  console.log("Number:", num);
-});
+// Reduce
+const total2 = [1, 2, 3].reduce((a, b) => a + b, 0);
 
+// =====================================================
+// FINAL NOTES
+// =====================================================
 
-console.log("\n=== REAL WORLD EXAMPLES ===");
+// ✔ Fixed duplicate variable names
+// ✔ Used const where possible
+// ✔ Improved naming (x, y instead of a, b mix)
+// ✔ Added safety (divide by zero)
+// ✔ Cleaner structure & comments
 
-// 8. Cart total
-let prices = [100, 200, 300];
-let total = 0;
-
-prices.forEach((price) => {
-  total += price;
-});
-
-console.log("Total cart value:", total);
-
-
-// 9. Find expensive items
-let items = [100, 500, 1000, 200];
-
-let expensive = items.filter((item) => {
-  return item > 300;
-});
-
-console.log("Expensive items:", expensive);
-
-
-// 10. Convert names to uppercase
-let names = ["lazik", "ali", "john"];
-
-let upperNames = names.map((name) => {
-  return name.toUpperCase();
-});
-
-console.log("Uppercase names:", upperNames);
-
-
-console.log("\n=== MINI CHALLENGES ===");
-
-// 11. Sum of array
-let arr = [1, 2, 3, 4, 5];
-let sum = 0;
-
-arr.forEach((n) => {
-  sum += n;
-});
-
-console.log("Sum:", sum);
-
-
-// 12. Count even numbers
-let count = 0;
-
-arr.forEach((n) => {
-  if (n % 2 === 0) count++;
-});
-
-console.log("Even count:", count);
-
-
-// 13. Find max number
-let max = arr[0];
-
-arr.forEach((n) => {
-  if (n > max) {
-    max = n;
-  }
-});
-
-console.log("Max number:", max);
+// 🔥 Revise once = strong basics ready
