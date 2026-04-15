@@ -191,6 +191,31 @@ return nums2.reduce((a, b) => a + b, 0);
 // Reduce
 const total2 = [1, 2, 3].reduce((a, b) => a + b, 0);
 
+
+// ===================================================== // DAY 7 – DOM & EVENTS (VERY IMPORTANT 🔥) // =====================================================
+
+// DOM = Document Object Model (HTML ko JS se control karna)
+
+// 1. Selecting Elements const heading = document.getElementById("title"); // by id const btn = document.querySelector("button"); // first match const allBtns = document.querySelectorAll("button"); // all buttons
+
+// 2. Changing Content if (heading) { heading.textContent = "Hello Lazik 🚀"; // change text }
+
+// 3. Changing Styles if (heading) { heading.style.color = "blue"; heading.style.fontSize = "24px"; }
+
+// 4. Event Listener (click) if (btn) { btn.addEventListener("click", () => { console.log("Button clicked 🔥"); }); }
+
+// 5. Input Example const input = document.querySelector("input");
+
+if (btn && input) { btn.addEventListener("click", () => { console.log("User typed:", input.value); }); }
+
+// 6. Toggle Example (real world) const toggleBtn = document.querySelector("#toggle");
+
+if (toggleBtn && heading) { toggleBtn.addEventListener("click", () => { if (heading.style.display === "none") { heading.style.display = "block"; } else { heading.style.display = "none"; } }); }
+
+// 7. Loop through multiple elements allBtns.forEach((b) => { b.addEventListener("click", () => { console.log("One of many buttons clicked"); }); });
+
+//
+
 // =====================================================
 // FINAL NOTES
 // =====================================================
