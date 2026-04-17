@@ -217,6 +217,100 @@ if (toggleBtn && heading) { toggleBtn.addEventListener("click", () => { if (head
 //
 
 // =====================================================
+// DAY 7 – ASYNC JAVASCRIPT
+// =====================================================
+
+
+// ==============================
+// 1. CALLBACK (old way)
+// ==============================
+
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data received");
+  }, 1000);
+}
+
+fetchData((data) => {
+  console.log(data);
+});
+
+
+// ==============================
+// 2. PROMISES
+// ==============================
+
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  setTimeout(() => {
+    if (success) {
+      resolve("Promise resolved");
+    } else {
+      reject("Promise rejected");
+    }
+  }, 1000);
+});
+
+myPromise
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+
+// ==============================
+// 3. ASYNC / AWAIT (modern way)
+// ==============================
+
+async function getData() {
+  try {
+    const result = await myPromise;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getData();
+
+
+// ==============================
+// 4. FETCH API (REAL WORLD)
+// ==============================
+
+async function fetchUsers() {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json();
+
+    console.log(data);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+fetchUsers();
+
+
+// ==============================
+// 5. PARALLEL REQUESTS
+// ==============================
+
+async function fetchMultiple() {
+  try {
+    const [users, posts] = await Promise.all([
+      fetch("https://jsonplaceholder.typicode.com/users").then(res => res.json()),
+      fetch("https://jsonplaceholder.typicode.com/posts").then(res => res.json())
+    ]);
+
+    console.log(users, posts);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+fetchMultiple();
+
+// =====================================================
 // FINAL NOTES
 // =====================================================
 
