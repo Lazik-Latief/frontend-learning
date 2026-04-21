@@ -310,6 +310,96 @@ async function fetchMultiple() {
 
 fetchMultiple();
 
+
+
+// =====================================================
+// DAY 8 – ASYNC JS + PROMISES + FETCH (IMPORTANT)
+// =====================================================
+
+// setTimeout (async behavior)
+setTimeout(() => {
+console.log("Runs after 2 seconds");
+}, 2000);
+
+// Callback example
+function fetchData(callback) {
+setTimeout(() => {
+callback("Data received");
+}, 1000);
+}
+
+fetchData((data) => {
+console.log(data);
+});
+
+// Promise
+const myPromise = new Promise((resolve, reject) => {
+let success = true;
+
+if (success) {
+resolve("Success!");
+} else {
+reject("Error!");
+}
+});
+
+myPromise
+.then((res) => console.log(res))
+.catch((err) => console.log(err));
+
+// Async / Await
+async function getData() {
+try {
+const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+const data = await res.json();
+console.log(data);
+} catch (err) {
+console.log("Error:", err);
+}
+}
+
+getData();
+
+// Parallel async calls
+async function getMultiple() {
+try {
+const [post, user] = await Promise.all([
+fetch("https://jsonplaceholder.typicode.com/posts/1").then(res => res.json()),
+fetch("https://jsonplaceholder.typicode.com/users/1").then(res => res.json())
+]);
+
+```
+console.log(post, user);
+```
+
+} catch (err) {
+console.log(err);
+}
+}
+
+getMultiple();
+
+// Finally
+myPromise
+.then(res => console.log(res))
+.catch(err => console.log(err))
+.finally(() => console.log("Done"));
+
+// Simple real-world example (API simulation)
+function loginUser() {
+return new Promise((resolve) => {
+setTimeout(() => resolve("User logged in"), 1000);
+});
+}
+
+async function startApp() {
+const user = await loginUser();
+console.log(user);
+}
+
+startApp();
+
+
 // =====================================================
 // FINAL NOTES
 // =====================================================
