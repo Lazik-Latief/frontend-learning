@@ -401,6 +401,124 @@ startApp();
 
 
 // =====================================================
+// DAY 9 – CLOSURES + HOISTING + SCOPE (CORE JS)
+// =====================================================
+
+// -------------------------------
+// 1. Scope (Global, Function, Block)
+// -------------------------------
+
+let globalVar = "I am global";
+
+function testScope() {
+let functionVar = "I am inside function";
+
+if (true) {
+let blockVar = "I am inside block";
+console.log(blockVar); // works
+}
+
+console.log(functionVar); // works
+// console.log(blockVar); ❌ error
+}
+
+testScope();
+
+// -------------------------------
+// 2. Hoisting
+// -------------------------------
+
+// var is hoisted (but undefined)
+console.log(a); // undefined
+var a = 10;
+
+// let/const NOT usable before declaration
+// console.log(b); ❌ ReferenceError
+let b = 20;
+
+// Function hoisting
+sayHello(); // works
+
+function sayHello() {
+console.log("Hello!");
+}
+
+// -------------------------------
+// 3. Closures (VERY IMPORTANT)
+// -------------------------------
+
+function outer() {
+let count = 0;
+
+return function inner() {
+count++;
+console.log("Count:", count);
+};
+}
+
+const counter = outer();
+
+counter(); // 1
+counter(); // 2
+counter(); // 3
+
+// -------------------------------
+// 4. Real-world Closure Example
+// -------------------------------
+
+function createUser(name) {
+return {
+greet: function () {
+console.log("Hello " + name);
+},
+};
+}
+
+const user1 = createUser("Ali");
+user1.greet();
+
+// -------------------------------
+// 5. Data Privacy using Closure
+// -------------------------------
+
+function bankAccount() {
+let balance = 1000;
+
+return {
+deposit(amount) {
+balance += amount;
+console.log("Balance:", balance);
+},
+getBalance() {
+return balance;
+},
+};
+}
+
+const acc = bankAccount();
+
+acc.deposit(500);
+console.log(acc.getBalance());
+
+// -------------------------------
+// 6. Interview Trick (Closure in loop)
+// -------------------------------
+
+for (var i = 1; i <= 3; i++) {
+setTimeout(() => {
+console.log("var:", i); // 4, 4, 4
+}, 1000);
+}
+
+for (let j = 1; j <= 3; j++) {
+setTimeout(() => {
+console.log("let:", j); // 1, 2, 3
+}, 1000);
+}
+
+
+
+// =====================================================
 // FINAL NOTES
 // =====================================================
 
