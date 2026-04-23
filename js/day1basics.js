@@ -517,6 +517,155 @@ console.log("let:", j); // 1, 2, 3
 }
 
 
+// =====================================================
+// DAY 10 – EVENT LOOP + CALLBACK QUEUE + DEBOUNCE/THROTTLE
+// =====================================================
+
+// -------------------------------
+// 1. Call Stack (Execution order)
+// -------------------------------
+
+function first() {
+console.log("First");
+}
+
+function second() {
+first();
+console.log("Second");
+}
+
+second();
+// Output:
+// First
+// Second
+
+// -------------------------------
+// 2. Async vs Sync
+// -------------------------------
+
+console.log("Start");
+
+setTimeout(() => {
+console.log("Async Task");
+}, 0);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Async Task
+
+// -------------------------------
+// 3. Event Loop Concept
+// -------------------------------
+
+// JS runs:
+// 1. Call Stack
+// 2. Web APIs (setTimeout, fetch)
+// 3. Callback Queue
+// 4. Event Loop pushes to stack
+
+// Example:
+console.log("1");
+
+setTimeout(() => {
+console.log("2");
+}, 0);
+
+console.log("3");
+
+// Output:
+// 1
+// 3
+// 2
+
+// -------------------------------
+// 4. Microtask Queue (Promises)
+// -------------------------------
+
+console.log("Start");
+
+Promise.resolve().then(() => {
+console.log("Promise");
+});
+
+setTimeout(() => {
+console.log("Timeout");
+}, 0);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Promise   (microtask runs first)
+// Timeout
+
+// -------------------------------
+// 5. Debounce (VERY IMPORTANT)
+// -------------------------------
+
+function debounce(fn, delay) {
+let timer;
+
+return function (...args) {
+clearTimeout(timer);
+timer = setTimeout(() => {
+fn(...args);
+}, delay);
+};
+}
+
+// Example usage:
+const search = debounce((text) => {
+console.log("Searching:", text);
+}, 500);
+
+// search("a");
+// search("ab");
+// search("abc");
+// Only "abc" runs after delay
+
+// -------------------------------
+// 6. Throttle (VERY IMPORTANT)
+// -------------------------------
+
+function throttle(fn, limit) {
+let inThrottle = false;
+
+return function (...args) {
+if (!inThrottle) {
+fn(...args);
+inThrottle = true;
+
+```
+  setTimeout(() => {
+    inThrottle = false;
+  }, limit);
+}
+```
+
+};
+}
+
+// Example:
+const logScroll = throttle(() => {
+console.log("Scrolling...");
+}, 1000);
+
+// -------------------------------
+// 7. Real-world Example
+// -------------------------------
+
+// Debounce → Search input
+// Throttle → Scroll / resize events
+
+// Example (React idea):
+// onChange → debounce API call
+// onScroll → throttle handler
+
+
 
 // =====================================================
 // FINAL NOTES
