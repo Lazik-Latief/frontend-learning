@@ -665,6 +665,132 @@ console.log("Scrolling...");
 // onChange → debounce API call
 // onScroll → throttle handler
 
+// =====================================================
+// DAY 11 – ASYNC JAVASCRIPT (Promises, Async/Await)
+// =====================================================
+
+// 1. What is Async JS?
+// JS runs line by line (synchronous), but async allows
+// tasks like API calls, timers, etc. without blocking code.
+
+// -----------------------------------------------------
+
+// 2. setTimeout (Basic Async Example)
+console.log("Start");
+
+setTimeout(() => {
+  console.log("This runs after 2 seconds");
+}, 2000);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// This runs after 2 seconds
+
+// -----------------------------------------------------
+
+// 3. Promise (Core Concept)
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) {
+    resolve("Task completed");
+  } else {
+    reject("Task failed");
+  }
+});
+
+myPromise
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+// -----------------------------------------------------
+
+// 4. Promise Chaining
+Promise.resolve(5)
+  .then((num) => num * 2)
+  .then((num) => num + 3)
+  .then((result) => console.log(result)); // 13
+
+// -----------------------------------------------------
+
+// 5. Async / Await (Cleaner way)
+async function getData() {
+  return "Hello Async";
+}
+
+getData().then(console.log);
+
+// Using await
+async function fetchData() {
+  let data = await Promise.resolve("Fetched Data");
+  console.log(data);
+}
+
+fetchData();
+
+// -----------------------------------------------------
+
+// 6. Error Handling (try...catch)
+async function errorExample() {
+  try {
+    let result = await Promise.reject("Error occurred");
+    console.log(result);
+  } catch (error) {
+    console.log("Caught:", error);
+  }
+}
+
+errorExample();
+
+// -----------------------------------------------------
+
+// 7. Fetch API (Real World Use)
+async function getUsers() {
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/users");
+    let data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log("Fetch error:", err);
+  }
+}
+
+getUsers();
+
+// -----------------------------------------------------
+
+// 8. Parallel Promises (Promise.all)
+async function getMultiple() {
+  let [a, b] = await Promise.all([
+    Promise.resolve(1),
+    Promise.resolve(2),
+  ]);
+
+  console.log(a, b); // 1 2
+}
+
+getMultiple();
+
+// -----------------------------------------------------
+
+// 9. Finally (runs always)
+Promise.resolve("Done")
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err))
+  .finally(() => console.log("Always runs"));
+
+// -----------------------------------------------------
+
+// 🔥 MINI PRACTICE:
+
+// 1. Create a promise that resolves after 3 sec
+// 2. Use async/await to call it
+// 3. Fetch posts from API and log titles
+// 4. Handle errors using try/catch
+
 
 
 // =====================================================
